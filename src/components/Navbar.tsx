@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Logo from "../../public/images/logo.svg";
+import Logo from "../../public/images/Frame 1410104375-3.svg";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -99,9 +99,11 @@ const Navbar = () => {
             );
           })}
         </div>
-        <button className="py-[14px] px-[8px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[8px] text-white w-[152px]">
-          Login
-        </button>
+        <Link href={"/login"}>
+          <button className="py-[14px] px-[8px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[8px] text-white w-[152px]">
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

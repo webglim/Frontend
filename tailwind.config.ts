@@ -13,6 +13,7 @@ const config: Config = {
       },
       backgroundImage: {
         heroBg: "url(/images/Vector.png)",
+        loginBg: "url(/images/Loginform.png)",
         bgTwo: "url(/images/bg2.png)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
