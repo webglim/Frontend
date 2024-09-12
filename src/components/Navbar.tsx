@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Logo from "../../public/images/Frame 1410104375-3.svg";
+import Logo from "../../public/images/logoBlack.svg";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -45,9 +45,15 @@ const navData: {
     route: "/contact",
   },
 ];
-const Navbar = () => {
+const Navbar = ({ scrollToAboutUs }: any) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const handleItemClick = (item: any) => {
+    if (item.route == "/about") {
+      scrollToAboutUs();
+      console.log("Item clicked:", item);
+    }
+  };
   return (
     <div className="bg-white px-[4%] py-[8px] flex md:flex-row flex-col items-center justify-between">
       <div className="md:w-1/2 w-full items-center flex ">
@@ -76,9 +82,13 @@ const Navbar = () => {
           {" "}
           {navData.map((item) => {
             return (
-              <p key={item.id} className="p-[10px] text-[16px] text-center">
-                <Link
-                  href={item.route}
+              <span
+                key={item.id}
+                className="p-[10px] text-[16px] text-center hover:cursor-pointer"
+                onClick={() => handleItemClick(item)}
+              >
+                <span
+                  // href={item.route}
                   className={`${
                     pathname === item.route
                       ? `md:py-[23px] mb-5  ${
@@ -94,13 +104,13 @@ const Navbar = () => {
                   } md:py-[20px] font-[500] whitespace-nowrap `}
                 >
                   {item.itemName}
-                </Link>
-              </p>
+                </span>
+              </span>
             );
           })}
         </div>
         <Link href={"/login"}>
-          <button className="py-[14px] px-[8px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[8px] text-white w-[152px]">
+          <button className="py-[14px] px-[8px] bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F] rounded-[8px] text-white w-[152px]">
             Login
           </button>
         </Link>

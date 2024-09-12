@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import wallet from "../../public/images/wallet.svg";
 import crypto from "../../public/images/crypto.svg";
 import plans from "../../public/images/plans.svg";
@@ -7,7 +8,9 @@ import withdraw from "../../public/images/withdraw.svg";
 import security from "../../public/images/security.svg";
 import support from "../../public/images/support.svg";
 import Image from "next/image";
-import laptop from "../../public/images/lappy.png";
+import laptop from "../../public/images/gold.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const data: { header: string; icon: string; body: string }[] = [
   {
@@ -46,10 +49,29 @@ const data: { header: string; icon: string; body: string }[] = [
     body: "Safeguard your digital assets in our state-of-the-art cryptocurrency wallet.",
   },
 ];
-const About = () => {
+const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
+  useEffect(() => {
+    if (shouldAboutUs && aboutUsRef && aboutUsRef.current) {
+      aboutUsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      onScrollComplete();
+    }
+  }, [shouldAboutUs, aboutUsRef, onScrollComplete]);
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
-    <div className="flex md:flex-row flex-col-reverse items-center px-[4%] py-4 bg-white">
-      <div className="md:w-1/2 w-full bg-bgTwo bg-no-repeat bg-cover  bg-center">
+    <div
+      className="flex md:flex-row flex-col-reverse items-center px-[4%] py-8 bg-white"
+      ref={aboutUsRef}
+    >
+      <div
+        className="md:w-1/2 w-full bg-bgTwo bg-no-repeat bg-cover  bg-center"
+        data-aos="fade-right"
+      >
         <Image alt="" src={laptop} />
       </div>
       <div className="md:w-1/2 w-full flex flex-col md:gap-[59px] gap-[20px]">
@@ -63,7 +85,11 @@ const About = () => {
         </div>
         <div className="p-[10px] flex flex-col md:gap-[64px] gap-[24px]">
           {data.map((item, index) => (
-            <div key={index} className="flex flex-col gap-[8px]">
+            <div
+              key={index}
+              className="flex flex-col gap-[8px]"
+              data-aos="fade-left"
+            >
               <div className="flex flex-row gap-[8px] items-center">
                 <Image
                   src={item.icon}

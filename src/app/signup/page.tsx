@@ -1,39 +1,75 @@
 "use client";
-import React, { useState } from "react";
 import logo from "../../../public/images/logo.svg";
 import Image from "next/image";
-import { TiInfoLarge } from "react-icons/ti";
 import Link from "next/link";
+import { TiInfoLarge } from "react-icons/ti";
+import React, { useState, useMemo } from "react";
+import Select from "react-select";
+import countryList from "react-select-country-list";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-
 const Login = () => {
-  const router = useRouter();
+  const [value, setValue] = useState("");
+  const options = useMemo<any>(() => countryList().getData(), []);
+
   type FormData = {
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
+    confirmPassword: string;
+    country: string;
   };
 
   const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
+    confirmPassword: "",
+    country: "",
   });
+  const changeHandler = (country: any) => {
+    // setValue(value);
+    const countryLabel = country?.label;
+    setFormData({
+      ...formData,
+      country: countryLabel,
+    });
+  };
+  //   const handleSelectChange = (selectedOption) => {
+  //     setFormData({
+  //       ...formData,
+  //       selectedOption,
+  //     });
+  //   };
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
     const newErrors: Partial<FormData> = {};
-
+    if (formData.firstName.length < 3) {
+      newErrors.firstName = "First Name must be at least 3 characters";
+    }
+    if (formData.lastName.length < 3) {
+      newErrors.lastName = "Last Name must be at least 3 characters";
+    }
     if (!formData.email) {
       newErrors.email = "Email is required";
     }
     if (formData.password.length < 5) {
       newErrors.password = "Password must be at least 5 characters";
     }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+    if (!formData.country) {
+      newErrors.country = "Please select an option";
+    }
     return newErrors;
   };
+
   const handleChange = (e: any) => {
     setFormData({
       ...formData,
@@ -43,6 +79,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    toast("hello");
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -52,19 +89,18 @@ const Login = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        "https://web-gold-limited-backend.onrender.com/api/v1/auth/login",
+        "https://web-gold-limited-backend.onrender.com/api/v1/auth/register",
         formData
       );
-
+      console.log("response", response);
       if (response.status === 201) {
-        toast.success(response.data.message);
-        router.push("/dashboard");
+        alert(
+          "Signup successful! Please check your email to verify your account."
+        );
         // Handle successful signup (e.g., redirect to login or verification page)
       }
     } catch (error: any) {
       if (error.response) {
-        console.log("error", error.response.data.message);
-        toast.error(error.response.data.message);
         // Handle validation or server errors from backend
         const serverErrors =
           error.response.data.errors || error.response.data.message;
@@ -83,6 +119,16 @@ const Login = () => {
     }
   };
 
+  //   const handleSubmit = (e: any) => {
+  //     e.preventDefault();
+  //     const formErrors = validateForm();
+  //     if (Object.keys(formErrors).length === 0) {
+  //       alert("Form submitted successfully");
+  //       console.log(formData);
+  //     } else {
+  //       setErrors(formErrors);
+  //     }
+  //   };
   return (
     <div className="h-screen flex md:flex-row flex-col bg-[#F9FAF9]">
       <div className="md:w-1/2 w-full bg-loginBg bg-no-repeat bg-cover px-[4%] pb-8 md:pb-0">
@@ -104,27 +150,63 @@ const Login = () => {
         <div className="bg-white rounded-[10px] shadow-md md:w-[80%] w-[90%] md:h-[80vh] items-center justify-center p-6">
           <div className="flex flex-col gap-[32px] items-center">
             <p className="text-[#2B2A2A] text-[28px] font-[700] leading-[34.13px]">
-              Welcome Back
+              Create Account
             </p>
-            <div className="flex flex-row items-center bg-[#FFDA694D] rounded-tr-[5px] rounded-br-[5px]">
-              <div className="rounded-[5px] py-[10px] px-[40px] bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F]">
-                <p className="text-[18px] font-[600] leading-[21.94px] text-[#F4F4F4]">
-                  Login
-                </p>
-              </div>
-              <Link href={"/signup"}>
-                <div className="rounded-tr-[5px] rounded-br-[5px] py-[10px] px-[40px] bg-[#FFDA694D]">
+            <div className="flex flex-row items-center bg-[#FFDA694D] rounded-tl-[5px] rounded-bl-[5px]">
+              <Link href={"/login"}>
+                <div className=" py-[10px] px-[40px] bg-[#FFDA694D] rounded-tl-[5px] rounded-bl-[5px]">
                   <p className="text-[18px] font-[600] leading-[21.94px] text-[#2B2A2A]">
-                    Signup
+                    Login
                   </p>
                 </div>
               </Link>
+              <div className="rounded-[5px] py-[10px] px-[40px]  bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F]">
+                <p className="text-[18px] font-[600] leading-[21.94px] text-[#F4F4F4]">
+                  Signup
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-[24px] mt-8">
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col gap-[8px]">
                 <div className="flex flex-col gap-[24px]">
+                  <div className="flex flex-row justify-between gap-[10px]">
+                    <div className=" w-1/2">
+                      <input
+                        name="firstName"
+                        minLength={3}
+                        // required
+                        type="text"
+                        className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] w-full"
+                        placeholder="First Name"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                      />
+                      {errors.firstName && (
+                        <p className="text-red-600 text-[8px]">
+                          {errors.firstName}
+                        </p>
+                      )}
+                    </div>
+                    <div className=" w-1/2">
+                      <input
+                        name="lastName"
+                        minLength={3}
+                        // required
+                        type="text"
+                        className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] w-full"
+                        placeholder="Last Name"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                      />
+                      {errors.lastName && (
+                        <p className="text-red-600 text-[8px]">
+                          {errors.lastName}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                   <div className="w-full">
                     <input
                       name="email"
@@ -153,23 +235,51 @@ const Login = () => {
                       </p>
                     )}
                   </div>
+                  <div>
+                    <input
+                      name="confirmPassword"
+                      type="password"
+                      className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] w-full"
+                      placeholder="Confirm Password"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                    />
+                    {errors.confirmPassword && (
+                      <p className="text-red-600 text-[8px]">
+                        {errors.confirmPassword}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <Select
+                      options={options}
+                      value={formData.country}
+                      onChange={changeHandler}
+                      className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px]"
+                    />
+                    {errors.country && (
+                      <p className="text-red-600 text-[8px]">
+                        {errors.country}
+                      </p>
+                    )}
+                  </div>
+
                   <p className="text-[#1B1C1F] text-[14px] font-[600] leading-[17.07px]">
                     Forgot password?
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-[38px] mt-2">
+              <div className="flex flex-col gap-[38px]">
                 <button
+                  className="bg-[#D88A19] py-[10px] rounded-[5px] text-[#F4F4F4] font-[600] text-[18px] leading-[21.94px]"
                   type="submit"
-                  className="bg-[#FFAA00] py-[10px] rounded-[5px] text-[#F4F4F4] font-[600] text-[18px] leading-[21.94px]"
                 >
-                  {isSubmitting ? "Loading..." : "Login"}
+                  Login
                 </button>
               </div>
             </form>
-            <p className="text-center font-[400] text-[12px] leading-[14.63px]">
-              Dont have an account?{" "}
-              <span className="font-[600]">Sign up .</span>
+            <p className="text-center font-[600] text-[12px] leading-[14.63px]">
+              Dont have an account? Sign up .
             </p>
           </div>
         </div>
