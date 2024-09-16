@@ -23,7 +23,7 @@ export default function Home() {
     setShouldAboutUs(false); // Reset the state after scrolling
   };
   return (
-    <div>
+    <div className={"overflow-x-hidden"}>
       <Navbar scrollToAboutUs={scrollToAboutUs} />
       <Hero />
       <About
