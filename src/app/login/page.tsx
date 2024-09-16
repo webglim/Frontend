@@ -57,6 +57,8 @@ const Login = () => {
       );
 
       if (response.status === 201) {
+        localStorage.setItem("token", response.data.data.token);
+        console.log("response.data.token", response);
         toast.success(response.data.message);
         router.push("/dashboard");
         // Handle successful signup (e.g., redirect to login or verification page)

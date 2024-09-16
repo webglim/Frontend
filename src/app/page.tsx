@@ -6,6 +6,10 @@ import Service from "@/components/Service";
 import Announcement from "@/components/Announcement";
 import Footer from "@/components/Footer";
 import { useRef, useState } from "react";
+import { LayoutProvider } from "@/components/context";
+import chatbot from "../../public/images/chatbot.svg";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const aboutUsRef = useRef(null);
@@ -28,8 +32,13 @@ export default function Home() {
         shouldAboutUs={shouldAboutUs}
       />
       <Service />
-      <Announcement />
+      {/* <Announcement /> */}
       <Footer />
+      <Link href="/support">
+        <div className="  fixed bottom-8 right-8" style={{ zIndex: 1000 }}>
+          <Image src={chatbot} alt="" />
+        </div>
+      </Link>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import user from "../../public/images/Image-60.png";
 import good from "../../public/images/Vector-11.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 const data: { header: string; icon: string; body: string }[] = [
   {
@@ -133,9 +134,11 @@ const Service = () => {
             </p>
           </div>
           <div>
-            <button className="py-[14px] px-[24px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[4px] text-white text-[16px] font-[600] leading-[20.16px]">
-              Invest Now
-            </button>
+            <Link href="/dashboard">
+              <button className="py-[14px] px-[24px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[4px] text-white text-[16px] font-[600] leading-[20.16px]">
+                Invest Now
+              </button>
+            </Link>
           </div>
         </div>
         <div className="md:w-1/2 w-full flex flex-col" data-aos="fade-left">
@@ -166,9 +169,11 @@ const Service = () => {
           </div>
           <Steps direction="vertical" current={0} items={item} />
           <div>
-            <button className="py-[14px] px-[16px] rounded-[4px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] text-white font-[600] text-[16px] leading-[20.16px]">
-              Get Started
-            </button>
+            <Link href="/dashboard">
+              <button className="py-[14px] px-[16px] rounded-[4px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] text-white font-[600] text-[16px] leading-[20.16px]">
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -345,10 +350,12 @@ const Service = () => {
                 </div>
               </div>
               <div>
-                <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
-                  {" "}
-                  Choose Plan
-                </button>
+                <Link href="/dashboard">
+                  <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
+                    {" "}
+                    Choose Plan
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -406,10 +413,12 @@ const Service = () => {
                 </div>
               </div>
               <div>
-                <button className="bg-white rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-[#FFAA00]">
-                  {" "}
-                  Choose Plan
-                </button>
+                <Link href="/dashboard">
+                  <button className="bg-white rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-[#FFAA00]">
+                    {" "}
+                    Choose Plan
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -467,10 +476,12 @@ const Service = () => {
                 </div>
               </div>
               <div>
-                <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
-                  {" "}
-                  Choose Plan
-                </button>
+                <Link href="/dashboard">
+                  <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
+                    {" "}
+                    Choose Plan
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

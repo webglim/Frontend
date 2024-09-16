@@ -4,6 +4,7 @@ import Photo from "../../public/images/image.png";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 const Hero = () => {
   useEffect(() => {
@@ -24,9 +25,11 @@ const Hero = () => {
             </p>
           </div>
           <div>
-            <button className="rounded-[8px] py-[16px] px-[25px] bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F] text-white">
-              Get Started Now
-            </button>
+            <Link href="/dashboard">
+              <button className="rounded-[8px] py-[16px] px-[25px] bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F] text-white">
+                Get Started Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

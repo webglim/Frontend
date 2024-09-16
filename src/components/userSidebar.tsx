@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+``;
 import { GrClose } from "react-icons/gr";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -14,6 +14,7 @@ import Image from "next/image";
 import { RiDashboardLine } from "react-icons/ri";
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { IoCloseSharp } from "react-icons/io5";
+import { RiUserSettingsLine } from "react-icons/ri";
 
 function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
   const pathname = usePathname();
@@ -84,7 +85,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
               <Link
                 // onClick={closeSidebar}
                 href="/invest"
-                className={`flex flex-row items-center gap-[16px] p-[30px] rounded-[8px] ${
+                className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/invest"
                     ? "bg-[#FFAA00] text-white"
                     : "bg-transparent text-[#A4A4A4]"
@@ -100,12 +101,33 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             <li>
               <Link
                 // onClick={closeSidebar}
-                href="/all-products"
-                className="flex flex-row items-center gap-[16px] p-[30px] rounded-[8px]"
+                href="/reinvest"
+                className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
+                  pathname === "/reinvest"
+                    ? "bg-[#FFAA00] text-white"
+                    : "bg-transparent text-[#A4A4A4]"
+                }`}
               >
-                <Image src={settings} alt="" />
+                <PiFlowerLotusLight className="w-[24px] h-[24px]" />
 
-                <p className="font-[400] text-[16px] leading-[21.79px] text-[#FFFFFF]">
+                <p className="font-[400] text-[16px] leading-[21.79px]">
+                  Re-Invest
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                // onClick={closeSidebar}
+                href="/settings"
+                className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
+                  pathname === "/settings"
+                    ? "bg-[#FFAA00] text-white"
+                    : "bg-transparent text-[#A4A4A4]"
+                }`}
+              >
+                <RiUserSettingsLine className="w-[24px] h-[24px]" />
+
+                <p className="font-[400] text-[16px] leading-[21.79px] ">
                   Settings
                 </p>
               </Link>

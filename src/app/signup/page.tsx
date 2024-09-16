@@ -8,10 +8,11 @@ import Select from "react-select";
 import countryList from "react-select-country-list";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 const Login = () => {
   const [value, setValue] = useState("");
   const options = useMemo<any>(() => countryList().getData(), []);
-
+  const router = useRouter();
   type FormData = {
     firstName: string;
     lastName: string;
@@ -79,7 +80,8 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast("hello");
+    // toast("hello");
+    const { confirmPassword, ...data } = formData;
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -90,13 +92,14 @@ const Login = () => {
     try {
       const response = await axios.post(
         "https://web-gold-limited-backend.onrender.com/api/v1/auth/register",
-        formData
+        data
       );
       console.log("response", response);
       if (response.status === 201) {
-        alert(
+        toast(
           "Signup successful! Please check your email to verify your account."
         );
+        router.push("/login");
         // Handle successful signup (e.g., redirect to login or verification page)
       }
     } catch (error: any) {
@@ -274,7 +277,7 @@ const Login = () => {
                   className="bg-[#D88A19] py-[10px] rounded-[5px] text-[#F4F4F4] font-[600] text-[18px] leading-[21.94px]"
                   type="submit"
                 >
-                  Login
+                  {isSubmitting ? "Loading..." : "Signup"}
                 </button>
               </div>
             </form>
