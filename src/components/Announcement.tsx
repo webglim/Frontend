@@ -37,7 +37,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
               Learn more
             </button>
           </div>
@@ -64,7 +64,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
               Learn more
             </button>
           </div>
@@ -91,7 +91,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] py-[8.32px] px-[26.73px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
               Learn more
             </button>
           </div>
