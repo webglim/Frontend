@@ -72,7 +72,7 @@ const item = [
 ];
 const Service = () => {
   return (
-    <div className="flex flex-col  md:px-[4%] px-[2%] py-4 bg-white gap-[32px]">
+    <div className="flex flex-col  md:px-[4%] px-[2%] py-4 bg-white md:gap-[32px] gap-[14px]">
       <div className="pb-4">
         <div className="flex flex-col gap-[8px]">
           <p className="text-[#001404B2] md:text-[20px] text-[14px] leading-[25.2px] font-[500]">
@@ -86,15 +86,19 @@ const Service = () => {
           {data.map((item, index) => (
             <div
               key={index}
-              className="py-[14px] md:px-[20px] px-[10px] rounded-[8px] gap-[8px] flex flex-col bg-[#C3DAFF]"
+              className="md:py-[14px] py-[8px] md:px-[20px] px-[10px] rounded-[8px] md:gap-[8px] gap-[4px] flex flex-col bg-[#C3DAFF]"
             >
-              <div className="flex flex-col gap-[6.57px]">
-                <Image src={item.icon} alt="" />
-                <p className="md:text-[19.71px] text-[10px] leading-[26.28px] font-[700] text-[#1D1D1D]">
+              <div className="flex flex-col md:gap-[6.57px] gap-[2px]">
+                <Image
+                  src={item.icon}
+                  alt=""
+                  className="w-[18px] md:w-[24px]"
+                />
+                <p className="md:text-[19.71px] text-[8px] leading-[26.28px] font-[700] text-[#1D1D1D]">
                   {item.header}
                 </p>
               </div>
-              <p className="text-[#1D1D1DB2] md:leading-[20.69px] leading-[10px] md:text-[16.42px] text-[8px] font-[400]">
+              <p className="text-[#1D1D1DB2] md:leading-[20.69px] leading-[10px] md:text-[16.42px] text-[6px] font-[400]">
                 {item.body}
               </p>
             </div>
@@ -102,13 +106,13 @@ const Service = () => {
         </div>
       </div>
       <div className="py-4 flex flex-row  md:gap-[58px] gap-[20px] items-center">
-        <div className="w-1/2 flex flex-col gap-[32px]">
+        <div className="w-1/2 flex flex-col md:gap-[32px] gap-[20px]">
           <div className="flex flex-col gap-[8px]">
-            <div className="flex flex-col gap-[8px]">
-              <p className="text-[#001404B2] md:text-[20px] text-[10px] font-[500] leading-[25.2px]">
+            <div className="flex flex-col md:gap-[8px] gap-[2px]">
+              <p className="text-[#001404B2] md:text-[20px] text-[10px] font-[500] md:leading-[25.2px]">
                 Feature to Investment Plans
               </p>
-              <p className="text-[#001404B2] md:text-[24px] text-[12px] font-[700] leading-[32px]">
+              <p className="text-[#001404B2] md:text-[24px] text-[12px] font-[700] md:leading-[32px]">
                 Financial Growth Through{" "}
                 <span className="text-[#E8A000]">Smart Investments</span>
               </p>
@@ -127,7 +131,7 @@ const Service = () => {
           </div>
           <div>
             <Link href="/dashboard">
-              <button className="py-[14px] px-[24px] bg-[#FBAD00] rounded-[4px] text-white text-[16px] font-[600] leading-[20.16px]">
+              <button className="md:py-[14px] py-[8px] md:px-[24px] px-[12px] bg-[#FBAD00] rounded-[4px] text-white md:text-[16px] text-[8px] font-[600] md:leading-[20.16px]">
                 Invest Now
               </button>
             </Link>
@@ -141,16 +145,16 @@ const Service = () => {
         <div className="md:w-1/2 w-full">
           <Image src={image} alt="" className="md:h-[629px] md:w-[629px]" />
         </div>
-        <div className="md:w-1/2 w-full flex flex-col gap-[32px]">
+        <div className="md:w-1/2 w-full flex flex-col md:gap-[32px] gap-[20px]">
           <div className="px-[16px] flex flex-col gap-[7px]">
-            <p className="md:text-[20px] text-[10px] font-[500] leading-[25.2px] text-[#001404B2]">
+            <p className="md:text-[20px] text-[10px] font-[500] md:eading-[25.2px] text-[#001404B2]">
               How It Works
             </p>
             <p className="md:text-[32px] text-[10px] font-[700] md:leading-[43.58px] leading-[28px] text-[#001404B2] ">
               Transform Your{" "}
               <span className="text-[#E8A000]">Holdings into Profits</span>
             </p>
-            <p className="font-[500] md:text-[16px] text-[8px] leading-[20.16px] text-[#1D1D1DB2]">
+            <p className="font-[500] md:text-[16px] text-[8px] md:leading-[20.16px] text-[#1D1D1DB2]">
               Understanding the Web Gold Limited process is simple and
               straightforward. Explore the five easy steps below to embark on
               your journey towards cryptocurrency investment success.
@@ -166,12 +170,12 @@ const Service = () => {
           </div>
         </div>
       </div>
-      <div className="py-4 flex flex-col gap-[32px]">
+      <div className="py-4 flex flex-col md:gap-[32px] gap-[12px">
         <div className="flex flex-col px-[16px] gap-[7px]">
           <p className="font-[500] text-[20px] md:leading-[25.2px] text-[#001404B2]">
             Testimonial
           </p>
-          <p className="font-[700] md:text-[32px] text-[20px] md:leading-[43.58px]">
+          <p className="font-[700] md:text-[32px] text-[18px] md:leading-[43.58px] mb-2 md:mb-0">
             What People Say <span className="text-[#E8A000]">About Us</span>
           </p>
         </div>
@@ -198,7 +202,7 @@ const Service = () => {
             <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
               It Pay’s!
             </p>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] leading-[20.16px] md:mt-6">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] md:mt-6">
               This is a very good company it pays consistently, real-time source
               of income, very informative and easy to use whether you are an
               authentic cryptocurrency user or not, they are best of all and I
@@ -227,7 +231,7 @@ const Service = () => {
             <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
               Awesome! I’love it!!
             </p>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] leading-[20.16px] md:mt-6">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] md:mt-6">
               This website is everything wrapped it to 1, clean interface with a
               lot of useful features, detailed price action and other info. very
               cool platform, fantastic experience their service is very prompt,
@@ -258,7 +262,7 @@ const Service = () => {
             <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
               The Best
             </p>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] leading-[20.16px] mt-6">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] mt-6">
               Consistent payments and exceptional service. Whether you're a
               seasoned crypto expert or just starting out, this platform offers
               top-notch information and ease of use. My rating: 5/5!
@@ -266,61 +270,61 @@ const Service = () => {
           </div>
         </div>
       </div>
-      <div className="py-4 flex flex-col gap-[32px]">
+      <div className="py-4 flex flex-col md:gap-[32px] gap-[14px]">
         <div className="flex flex-col gap-[7px] px-[16px]">
-          <p className="text-[#001404B2] font-[500] text-[20px] md:leading-[25.2px]">
+          <p className="text-[#001404B2] font-[500] md:text-[20px] text-[10px] md:leading-[25.2px]">
             pricing plan
           </p>
-          <p className="font-[700] md:text-[32px] text-[20px] md:leading-[43.58px]">
+          <p className="font-[700] md:text-[32px] text-[10px] md:leading-[43.58px]">
             <span className="text-[#E8A000]">Best Plan </span>for you
           </p>
         </div>
         <div className="flex flex-row  md:gap-[58px] gap-[8px]">
           <div className="flex flex-col w-1/3 rounded-[10px]  shadow-md bg-white px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
                 Silver Plan
               </p>
             </div>
-            <div className="flex flex-col gap-[24px] items-center mt-6">
-              <div className="flex flex-col gap-[32px]">
-                <p className="text-[#FBAD00] font-[600] md:text-[32px] text-[12px] leading-[43.58px]">
+            <div className="flex flex-col gap-[24px] items-center md:mt-6 mt-2">
+              <div className="flex flex-col md:gap-[32px] gap-[10px]">
+                <p className="text-[#FBAD00] font-[600] md:text-[32px] text-[12px] md:leading-[43.58px]">
                   From /€1,000
                 </p>
-                <div className="flex flex-col gap-[8px]">
+                <div className="flex flex-col md:gap-[8px] gap-[2px]">
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Duration 1 Month
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Profit Return Type Daily Basis
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Percentage per Day 19.93%
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Minimum Return €6,178.3
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Maximum Return €123,559.8
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       No limit on withdrawal
                     </p>
                   </div>
@@ -328,7 +332,7 @@ const Service = () => {
               </div>
               <div>
                 <Link href="/dashboard">
-                  <button className="bg-[#FBAD00] rounded-[6px] py-[14px] md:px-[45px] px-[20px] mb-12 font-[600] md:text-[20px] text-[10px] leading-[27.24px] text-white">
+                  <button className="bg-[#FBAD00] rounded-[6px] md:py-[14px] py-[7px] md:px-[45px] px-[20px] md:mb-12 mb-2 font-[600] md:text-[20px] text-[10px] md:leading-[27.24px] text-white">
                     {" "}
                     Choose Plan
                   </button>
@@ -338,49 +342,49 @@ const Service = () => {
           </div>
           <div className="flex flex-col w-1/3  rounded-[10px]  shadow-md  bg-[#FFAA00] px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
                 Gold Plan
               </p>
             </div>
-            <div className="flex flex-col gap-[24px] items-center mt-6">
-              <div className="flex flex-col gap-[32px]">
-                <p className="text-white font-[600] md:text-[32px] text-[12px] leading-[43.58px]">
+            <div className="flex flex-col md:gap-[24px] gap-[10px] items-center md:mt-6 mt-2">
+              <div className="flex flex-col md:gap-[32px] gap-[10px]">
+                <p className="text-white font-[600] md:text-[32px] text-[12px] md:leading-[43.58px]">
                   From /€20,000
                 </p>
-                <div className="flex flex-col gap-[8px]">
+                <div className="flex flex-col md:gap-[8px] gap-[2px]">
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Duration 1 Month
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Profit Return Type Daily Basis
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Percentage per Day 19.93%
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Minimum Return €6,178.3
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Maximum Return €123,559.8
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-white font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       No limit on withdrawal
                     </p>
                   </div>
@@ -388,7 +392,7 @@ const Service = () => {
               </div>
               <div>
                 <Link href="/dashboard">
-                  <button className="bg-white rounded-[6px] py-[14px] md:px-[45px] px-[20px] mb-12 font-[600] md:text-[20px] text-[10px] leading-[27.24px] text-[#FFAA00]">
+                  <button className="bg-white rounded-[6px] md:py-[14px] py-[7px] md:px-[45px] px-[20px] md:mb-12 mb-2 font-[600] md:text-[20px] text-[10px] md:leading-[27.24px] text-[#FFAA00]">
                     {" "}
                     Choose Plan
                   </button>
@@ -398,49 +402,49 @@ const Service = () => {
           </div>
           <div className="flex flex-col w-1/3 rounded-[10px]  shadow-md bg-white px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
                 Platinum Plan
               </p>
             </div>
-            <div className="flex flex-col gap-[24px] items-center mt-6">
-              <div className="flex flex-col gap-[32px] items-center">
+            <div className="flex flex-col md:gap-[24px] gap-[10px] items-center md:mt-6 mt-2">
+              <div className="flex flex-col md:gap-[32px] gap-[10px] items-center">
                 <p className="text-[#FBAD00]  font-[600] md:text-[32px] text-[12px] md:leading-[43.58px] text-center">
                   From /€50,000 -€2,000,000
                 </p>
-                <div className="flex flex-col gap-[8px] ">
+                <div className="flex flex-col md:gap-[8px] gap-[2px]">
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2] text-center  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2] text-center  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Duration 1 Month
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Profit Return Type Daily Basis
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Percentage per Day 19.93%
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2] font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2] font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Minimum Return €6,178.3
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       Maximum Return €123,559.8
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
-                    <Image src={good} alt="" />
-                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] leading-[20.43px]">
+                    <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
+                    <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
                       No limit on withdrawal
                     </p>
                   </div>
@@ -448,7 +452,7 @@ const Service = () => {
               </div>
               <div>
                 <Link href="/dashboard">
-                  <button className="bg-[#FBAD00] rounded-[6px] py-[14px] md:px-[45px] px-[20px] mb-12 font-[600] md:text-[20px] text-[10px] leading-[27.24px] text-white">
+                  <button className="bg-[#FBAD00] rounded-[6px] md:py-[14px] py-[7px] md:px-[45px] px-[20px] md:mb-12 mb-2 font-[600] md:text-[20px] text-[10px] md:leading-[27.24px] text-white">
                     {" "}
                     Choose Plan
                   </button>

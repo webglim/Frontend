@@ -105,7 +105,7 @@ body {
   color: white;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
   .ant-steps
     .ant-steps-item-process
     > .ant-steps-item-container
@@ -116,12 +116,11 @@ body {
     font-weight: 700;
     line-height: 15.68px;
   }
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-steps
-    .ant-steps-item-description {
+  .ant-steps .ant-steps-item-description {
     color: rgba(0, 0, 0, 0.45);
     font-size: 8px;
   }
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-steps
+  .ant-steps
     .ant-steps-item-wait
     > .ant-steps-item-container
     > .ant-steps-item-content
@@ -140,13 +139,24 @@ body {
     font-weight: 500;
     line-height: 20.16px;
   }
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-steps .ant-steps-item-icon {
-    width: 24px !important;
-    height: 24px !important;
+  .ant-steps .ant-steps-item-icon {
+    width: 18px !important;
+    height: 18px !important;
     border-radius: 12px !important;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+  .ant-rate {
+    font-size: 10px !important;
+  }
+  .ant-steps.ant-steps-vertical > .ant-steps-item .ant-steps-item-title {
+    line-height: 12px !important;
+  }
+  :where(.css-dev-only-do-not-override-qnu6hi).ant-steps.ant-steps-vertical
+    > .ant-steps-item
+    .ant-steps-item-description {
+    padding-bottom: 5px !important;
   }
 }

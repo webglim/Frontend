@@ -60,7 +60,7 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
 
   return (
     <div
-      className="flex flex-row  items-center px-[4%] py-8 bg-white"
+      className="flex flex-row  items-center md:px-[4%] px-[2%] py-8 bg-white"
       ref={aboutUsRef}
     >
       <div className="w-1/2  bg-bgTwo bg-no-repeat bg-cover  bg-center">
@@ -77,20 +77,20 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
             journey.
           </p>
         </div>
-        <div className="p-[10px] flex flex-col md:gap-[64px] gap-[12px]">
+        <div className="p-[10px] flex flex-col md:gap-[64px] gap-[5px]">
           {data.map((item, index) => (
             <div key={index} className="flex flex-col md:gap-[8px] gap-[4px]">
               <div className="flex flex-row gap-[8px] items-center">
                 <Image
                   src={item.icon}
                   alt=""
-                  className="md:w-[32px] w-[24px] h-[24px] md:h-[32px]"
+                  className="md:w-[32px] w-[18px] h-[18px] md:h-[32px]"
                 />
-                <p className="text-[#001404B2] md:text-[20px] text-[12px] font-[700] leading-[32px]">
+                <p className="text-[#001404B2] md:text-[20px] text-[10px] font-[700] md:leading-[32px]">
                   {item.header}
                 </p>
               </div>
-              <p className="text-[#001404B2] md:text-[16px] text-[10px] font-[500] leading-[20.16px]">
+              <p className="text-[#001404B2] md:text-[16px] text-[8px] font-[500] md:leading-[20.16px]">
                 {item.body}
               </p>
             </div>
