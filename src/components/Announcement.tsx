@@ -16,8 +16,11 @@ const Announcement = () => {
       </div>
       <div className="md:gap-[27.48px] gap-[10px] flex flex-row p-[7.63px]">
         <div className="flex flex-col w-1/3  md:gap-[20.19px] gap-[10px]">
-          <Image alt="" src={photo} className="w-full" />
-          <div className="flex flex-col gap-[10.1px]">
+          <div className="h-[30%]">
+            <Image alt="" src={photo} className="w-full " />
+          </div>
+
+          <div className="flex flex-col gap-[10.1px] h-[60%]">
             <div className="flex flex-col gap-[4.75px]">
               <p className="text-[#151716] font-[700] md:text-[14.25px] text-[8px] md:leading-[19.01px]">
                 Cryptocurrency Prices on August 22: Bitcoin rises above $60,700
@@ -36,15 +39,18 @@ const Announcement = () => {
               potential of interconnected success.Together,{" "}
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center h-[10%]">
             <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px] md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
           </div>
         </div>
         <div className="flex flex-col w-1/3  md:gap-[20.19px] gap-[10px]">
-          <Image alt="" src={photo2} className="w-full" />
-          <div className="flex flex-col gap-[10.1px]">
+          <div className="h-[30%]">
+            <Image alt="" src={photo2} className="w-full" />
+          </div>
+
+          <div className="flex flex-col gap-[10.1px] h-[60%]">
             <div className="flex flex-col gap-[4.75px]">
               <p className="text-[#151716] font-[700] md:text-[14.25px] text-[8px] md:leading-[19.01px]">
                 Analysts estimate that the global cryptocurrency market will
@@ -63,15 +69,18 @@ const Announcement = () => {
               potential of interconnected success.Together,{" "}
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center h-[10%]">
             <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px] md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
           </div>
         </div>
         <div className="flex flex-col w-1/3  md:gap-[20.19px] gap-[10px]">
-          <Image alt="" src={photo2} className="w-full" />
-          <div className="flex flex-col gap-[10.1px]">
+          <div className="h-[30%]">
+            <Image alt="" src={photo2} className="w-full" />
+          </div>
+
+          <div className="flex flex-col gap-[10.1px] h-[60%]">
             <div className="flex flex-col gap-[4.75px]">
               <p className="text-[#151716] font-[700] md:text-[14.25px] text-[8px] md:leading-[19.01px]">
                 Bitcoin's value has rallied over the last few quarters,
@@ -90,7 +99,7 @@ const Announcement = () => {
               potential of interconnected success.Together,{" "}
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center h-[10%]">
             <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px]  md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
