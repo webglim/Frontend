@@ -6,14 +6,14 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="bg-heroBg  bg-center bg-no-repeat bg-contain h-[90vh] bg-[#FAFAFA] px-[4%] flex md:flex-row flex-col items-center">
+    <div className="bg-heroBg  bg-center bg-no-repeat bg-contain md:h-[90vh] h-[50vh] bg-[#FAFAFA] px-[4%] flex flex-row items-center">
       <div className="md:w-1/2 w-full flex  items-center">
         <div className="flex flex-col md:gap-[26px] gap-[14px]">
           <div className="flex flex-col gap-[8px] text-black">
-            <p className="md:text-[48px] text-[24px] font-[700] md:leading-[64px] leading-[32px] mt-8 md:mt-0">
+            <p className="md:text-[48px] text-[18px] font-[700] md:leading-[64px] leading-[32px] mt-8 md:mt-0">
               Grow Your Wealth with Cryptocurrency, Invest in the Future.
             </p>
-            <p className="md:text-[20px] text-[16px] font-[400] md:leading-[25.2px]">
+            <p className="md:text-[20px] text-[12px] font-[400] md:leading-[25.2px]">
               Experience seamless crypto trading. Our platform offers advanced
               tools, and dedicated support to help you succeed.
             </p>

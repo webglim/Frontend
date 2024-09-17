@@ -60,38 +60,37 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
 
   return (
     <div
-      className="flex md:flex-row flex-col-reverse items-center px-[4%] py-8 bg-white"
+      className="flex flex-row  items-center px-[4%] py-8 bg-white"
       ref={aboutUsRef}
     >
-      <div
-        className="md:w-1/2 w-full bg-bgTwo bg-no-repeat bg-cover  bg-center"
-        data-aos="fade-right"
-      >
+      <div className="w-1/2  bg-bgTwo bg-no-repeat bg-cover  bg-center">
         <Image alt="" src={laptop} />
       </div>
-      <div className="md:w-1/2 w-full flex flex-col md:gap-[59px] gap-[20px]">
+      <div className="w-1/2  flex flex-col md:gap-[59px] gap-[20px]">
         <div className="flex flex-col gap-[8px]">
-          <p className="font-[500] text-[20px] leading-[25.2px]">About us</p>
-          <p className="font-[700] md:text-[24px] text-[16px] md:leading-[32px]">
+          <p className="font-[500] md:text-[20px] text-[12px] leading-[25.2px]">
+            About us
+          </p>
+          <p className="font-[700] md:text-[24px] text-[8px] md:leading-[32px]">
             <span className="text-[#E8A000]">Our platform</span> offers a range
             of exceptional features to elevate your cryptocurrency investment
             journey.
           </p>
         </div>
-        <div className="p-[10px] flex flex-col md:gap-[64px] gap-[24px]">
+        <div className="p-[10px] flex flex-col md:gap-[64px] gap-[12px]">
           {data.map((item, index) => (
-            <div key={index} className="flex flex-col gap-[8px]">
+            <div key={index} className="flex flex-col md:gap-[8px] gap-[4px]">
               <div className="flex flex-row gap-[8px] items-center">
                 <Image
                   src={item.icon}
                   alt=""
                   className="md:w-[32px] w-[24px] h-[24px] md:h-[32px]"
                 />
-                <p className="text-[#001404B2] md:text-[20px] text-[16px] font-[700] leading-[32px]">
+                <p className="text-[#001404B2] md:text-[20px] text-[12px] font-[700] leading-[32px]">
                   {item.header}
                 </p>
               </div>
-              <p className="text-[#001404B2] md:text-[16px] text-[12px] font-[500] leading-[20.16px]">
+              <p className="text-[#001404B2] md:text-[16px] text-[10px] font-[500] leading-[20.16px]">
                 {item.body}
               </p>
             </div>
