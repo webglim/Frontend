@@ -367,19 +367,19 @@ const Service = () => {
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Percentage per Day 19.93%
+                      Percentage per Day 23.87%
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Minimum Return €6,178.3
+                      Minimum Return €147,994
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-white font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Maximum Return €123,559.8
+                      Maximum Return €369,997.56
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
@@ -427,19 +427,19 @@ const Service = () => {
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Percentage per Day 19.93%
+                      Percentage per Day 30.19%
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-[#000000B2] font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Minimum Return €6,178.3
+                      Minimum Return €467,945
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
                     <Image src={good} alt="" className="w-[10px] md:w-[24px]" />
                     <p className="text-[#000000B2]  font-[400] md:text-[15px] text-[8px] md:leading-[20.43px]">
-                      Maximum Return €123,559.8
+                      Maximum Return €18,717,800
                     </p>
                   </div>
                   <div className="flex flex-row items-center md:gap-[16px] gap-[4px]">
