@@ -279,7 +279,7 @@ const Service = () => {
             <span className="text-[#E8A000]">Best Plan </span>for you
           </p>
         </div>
-        <div className="flex md:flex-row flex-col md:gap-[58px] gap-[24px]">
+        <div className="flex flex-row  md:gap-[58px] gap-[24px]">
           <div
             className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md bg-white"
             data-aos="zoom-in-up"
