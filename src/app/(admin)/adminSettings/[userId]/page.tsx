@@ -129,7 +129,7 @@ const page = ({ params }: { params: { userId: string } }) => {
   };
 
   return (
-    <div className="flex flex-col px-[2%] bg-[#F9F9F9] min-h-screen pb-10">
+    <div className="flex flex-col px-[2%] bg-[#F9F9F9] min-h-screen pb-10 text-black">
       <Link href="/adminArea">
         <p className="font-[700] mt-4 text-[14px] leading-[32.68px] text-[#333333]">
           Back
