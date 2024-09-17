@@ -32,8 +32,8 @@ const page = () => {
   useEffect(() => {
     if (data) {
       setFormData({
-        firstName: data?.firstName || "",
-        lastName: data?.lastName || "",
+        firstName: data?.firstName,
+        lastName: data?.lastName,
         phone: data?.phone,
         nextOfKinFirstName: data?.nextOfKinFirstName,
         nextOfKinLastName: data?.nextOfKinLastName,
@@ -128,7 +128,7 @@ const page = () => {
   };
 
   return (
-    <div className="flex flex-col px-[2%] bg-[#F9F9F9] min-h-screen pb-10">
+    <div className="flex flex-col px-[2%] bg-[#F9F9F9] min-h-screen pb-10 text-black">
       <p className="font-[700] mt-4 text-[24px] leading-[32.68px] text-[#333333]">
         Settings
       </p>
