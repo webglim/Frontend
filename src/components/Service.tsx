@@ -173,7 +173,7 @@ const Service = () => {
             What People Say <span className="text-[#E8A000]">About Us</span>
           </p>
         </div>
-        <div className="flex md:flex-row flex-col p-[12.05px] md:gap-[28.93px] gap-[16px]">
+        <div className="flex flex-row  p-[12.05px] md:gap-[28.93px] gap-[16px]">
           <div
             className="md:w-1/3 w-full rounded-[18.52px] p-[24.69px] gap-[12.35px] bg-[#C3DAFF]"
             data-aos="zoom-in"
@@ -280,18 +280,15 @@ const Service = () => {
           </p>
         </div>
         <div className="flex flex-row  md:gap-[58px] gap-[24px]">
-          <div
-            className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md bg-white"
-            data-aos="zoom-in-up"
-          >
+          <div className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md bg-white">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] text-[24px] leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[12px] leading-[32.68px] text-white">
                 Silver Plan
               </p>
             </div>
             <div className="flex flex-col gap-[24px] items-center mt-6">
               <div className="flex flex-col gap-[32px]">
-                <p className="text-[#FBAD00] font-[600] text-[32px] leading-[43.58px]">
+                <p className="text-[#FBAD00] font-[600] md:text-[32px] text-[12px] leading-[43.58px]">
                   From /€1,000
                 </p>
                 <div className="flex flex-col gap-[8px]">

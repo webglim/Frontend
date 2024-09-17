@@ -105,6 +105,7 @@ const Login = () => {
     } catch (error: any) {
       if (error.response) {
         // Handle validation or server errors from backend
+        toast.error(error.response.data.message);
         const serverErrors =
           error.response.data.errors || error.response.data.message;
         setErrors(serverErrors);
