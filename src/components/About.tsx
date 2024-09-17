@@ -9,8 +9,6 @@ import security from "../../public/images/security.svg";
 import support from "../../public/images/support.svg";
 import Image from "next/image";
 import laptop from "../../public/images/gold.png";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const data: { header: string; icon: string; body: string }[] = [
   {
@@ -59,10 +57,7 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
       onScrollComplete();
     }
   }, [shouldAboutUs, aboutUsRef, onScrollComplete]);
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
+
   return (
     <div
       className="flex md:flex-row flex-col-reverse items-center px-[4%] py-8 bg-white"
@@ -85,11 +80,7 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
         </div>
         <div className="p-[10px] flex flex-col md:gap-[64px] gap-[24px]">
           {data.map((item, index) => (
-            <div
-              key={index}
-              className="flex flex-col gap-[8px]"
-              data-aos="fade-left"
-            >
+            <div key={index} className="flex flex-col gap-[8px]">
               <div className="flex flex-row gap-[8px] items-center">
                 <Image
                   src={item.icon}

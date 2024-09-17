@@ -133,7 +133,7 @@ const Login = () => {
   //     }
   //   };
   return (
-    <div className="h-screen flex md:flex-row flex-col bg-[#F9FAF9]">
+    <div className="h-screen flex md:flex-row flex-col bg-[#F9FAF9] text-black">
       <div className="md:w-1/2 w-full bg-loginBg bg-no-repeat bg-cover px-[4%] pb-8 md:pb-0">
         <Image alt="" src={logo} className="mt-4" />
         <div className="flex flex-col items-center justify-center md:h-[90vh] ">

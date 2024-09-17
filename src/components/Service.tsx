@@ -12,8 +12,6 @@ import image from "../../public/images/19466810_6134223 1.png";
 import { Steps, Rate } from "antd";
 import user from "../../public/images/Image-60.png";
 import good from "../../public/images/Vector-11.svg";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Link from "next/link";
 
 const data: { header: string; icon: string; body: string }[] = [
@@ -71,10 +69,6 @@ const item = [
   },
 ];
 const Service = () => {
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
   return (
     <div className="flex flex-col  px-[4%] py-4 bg-white gap-[32px]">
       <div className="pb-4">
@@ -89,7 +83,6 @@ const Service = () => {
         <div className="p-[10px] grid md:grid-cols-3 grid-cols-1 gap-y-[16px] gap-x-[14px]">
           {data.map((item, index) => (
             <div
-              data-aos="flip-left"
               key={index}
               className="py-[14px] px-[20px] rounded-[8px] gap-[8px] flex flex-col bg-[#C3DAFF]"
             >
@@ -107,10 +100,7 @@ const Service = () => {
         </div>
       </div>
       <div className="py-4 flex md:flex-row flex-col md:gap-[58px] gap-[20px]">
-        <div
-          className="md:w-1/2 w-full flex flex-col gap-[32px]"
-          data-aos="fade-right"
-        >
+        <div className="md:w-1/2 w-full flex flex-col gap-[32px]">
           <div className="flex flex-col gap-[8px]">
             <div className="flex flex-col gap-[8px]">
               <p className="text-[#001404B2] text-[20px] font-[500] leading-[25.2px]">
@@ -121,7 +111,7 @@ const Service = () => {
                 <span className="text-[#E8A000]">Smart Investments</span>
               </p>
             </div>
-            <p>
+            <p className="text-[#001404B2]">
               Discover a range of meticulously crafted investment plans designed
               to cater to your unique financial aspirations. At Quickpay, we
               understand that every investor is different, and that’s why we
@@ -135,24 +125,21 @@ const Service = () => {
           </div>
           <div>
             <Link href="/dashboard">
-              <button className="py-[14px] px-[24px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[4px] text-white text-[16px] font-[600] leading-[20.16px]">
+              <button className="py-[14px] px-[24px] bg-[#FBAD00] rounded-[4px] text-white text-[16px] font-[600] leading-[20.16px]">
                 Invest Now
               </button>
             </Link>
           </div>
         </div>
-        <div className="md:w-1/2 w-full flex flex-col" data-aos="fade-left">
+        <div className="md:w-1/2 w-full flex flex-col">
           <Image src={photo} alt="" />
         </div>
       </div>
       <div className="py-4 flex md:flex-row flex-col-reverse gap-[28px] items-center">
-        <div className="md:w-1/2 w-full" data-aos="fade-right">
+        <div className="md:w-1/2 w-full">
           <Image src={image} alt="" className="md:h-[629px] md:w-[629px]" />
         </div>
-        <div
-          className="md:w-1/2 w-full flex flex-col gap-[32px]"
-          data-aos="fade-left"
-        >
+        <div className="md:w-1/2 w-full flex flex-col gap-[32px]">
           <div className="px-[16px] flex flex-col gap-[7px]">
             <p className="text-[20px] font-[500] leading-[25.2px] text-[#001404B2]">
               How It Works
@@ -170,7 +157,7 @@ const Service = () => {
           <Steps direction="vertical" current={0} items={item} />
           <div>
             <Link href="/dashboard">
-              <button className="py-[14px] px-[16px] rounded-[4px] bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] text-white font-[600] text-[16px] leading-[20.16px]">
+              <button className="py-[14px] px-[16px] rounded-[4px] bg-[#FBAD00] text-white font-[600] text-[16px] leading-[20.16px]">
                 Get Started
               </button>
             </Link>
@@ -253,10 +240,7 @@ const Service = () => {
               overall. Thumbs up team
             </p>
           </div>
-          <div
-            className="md:w-1/3 w-full rounded-[18.52px] p-[24.69px] gap-[12.35px] bg-[#C3DAFF]"
-            data-aos="zoom-in"
-          >
+          <div className="md:w-1/3 w-full rounded-[18.52px] p-[24.69px] gap-[12.35px] bg-[#C3DAFF]">
             <div className="flex flex-col gap-[6.17px]">
               <div className="flex flex-row gap-[12.88px]">
                 <Image
@@ -351,7 +335,7 @@ const Service = () => {
               </div>
               <div>
                 <Link href="/dashboard">
-                  <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
+                  <button className="bg-[#FBAD00] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
                     {" "}
                     Choose Plan
                   </button>
@@ -359,10 +343,7 @@ const Service = () => {
               </div>
             </div>
           </div>
-          <div
-            className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md  bg-[#FFAA00]"
-            data-aos="zoom-in-up"
-          >
+          <div className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md  bg-[#FFAA00]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
               <p className="text-center font-[600] text-[24px] leading-[32.68px] text-white">
                 Gold Plan
@@ -422,10 +403,7 @@ const Service = () => {
               </div>
             </div>
           </div>
-          <div
-            className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md bg-white "
-            data-aos="zoom-in-up"
-          >
+          <div className="flex flex-col md:w-1/3 w-full rounded-[10px]  shadow-md bg-white ">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
               <p className="text-center font-[600] text-[24px] leading-[32.68px] text-white">
                 Platinum Plan
@@ -477,7 +455,7 @@ const Service = () => {
               </div>
               <div>
                 <Link href="/dashboard">
-                  <button className="bg-gradient-to-b from-[#DC9D14] via-[#D69402] to-[#916E06] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
+                  <button className="bg-[#FBAD00] rounded-[6px] py-[14px] px-[45px] mb-12 font-[600] text-[20px] leading-[27.24px] text-white">
                     {" "}
                     Choose Plan
                   </button>

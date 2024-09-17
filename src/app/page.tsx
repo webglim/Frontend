@@ -32,7 +32,7 @@ export default function Home() {
         shouldAboutUs={shouldAboutUs}
       />
       <Service />
-      {/* <Announcement /> */}
+      <Announcement />
       <Footer />
       <Link href="/support">
         <div className="  fixed bottom-8 right-8" style={{ zIndex: 1000 }}>
