@@ -192,7 +192,7 @@ const Service = () => {
                   <p className="font-[600] md:text-[23.6px] text-[8px] md:leading-[28.77px] text-[#000000]">
                     Arttu Vatanen
                   </p>
-                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] leading-[16.44px]">
+                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] md:leading-[16.44px]">
                     Retiree
                   </p>
                 </div>
@@ -221,7 +221,7 @@ const Service = () => {
                   <p className="font-[600] md:text-[23.6px] text-[8px] md:leading-[28.77px] text-[#000000]">
                     Tammy Jenkins
                   </p>
-                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] leading-[16.44px]">
+                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] md:leading-[16.44px]">
                     small business owner
                   </p>
                 </div>
