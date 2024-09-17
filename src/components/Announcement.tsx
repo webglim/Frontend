@@ -7,10 +7,10 @@ const Announcement = () => {
   return (
     <div className="flex flex-col md:gap-[32px] gap-[14px] px-[4%] py-4 bg-white">
       <div className="flex flex-col gap-[7px] px-[16px]">
-        <p className="text-[#001404B2] font-[500] text-[20px] leading-[25.2px]">
+        <p className="text-[#001404B2] font-[500] md:text-[20px] text-[12px] leading-[25.2px]">
           Announcement
         </p>
-        <p className="font-[700] md:text-[32px] text-[20px] md:leading-[43.58px] text-[#E8A000]">
+        <p className="font-[700] md:text-[32px] text-[12px]  md:leading-[43.58px] text-[#E8A000]">
           <span className="text-[#001404B2]">Our </span>Latest Announcement
         </p>
       </div>
@@ -37,7 +37,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-[#FBAD00] py-[8.32px] md:px-[26.73px] px-[15px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px] md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
           </div>
@@ -64,7 +64,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-[#FBAD00] py-[8.32px] md:px-[26.73px] px-[15px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px] md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
           </div>
@@ -91,7 +91,7 @@ const Announcement = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <button className="bg-[#FBAD00] py-[8.32px] md:px-[26.73px] px-[15px] rounded-[3.56px] text-white font-[700] text-[16px] leading-[21.79px]">
+            <button className="bg-[#FBAD00] md:py-[8.32px] py-[4px]  md:px-[26.73px] px-[10px] rounded-[3.56px] text-white font-[700] md:text-[16px] text-[8px] md:leading-[21.79px]">
               Learn more
             </button>
           </div>

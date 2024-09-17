@@ -112,7 +112,7 @@ body {
     > .ant-steps-item-content
     > .ant-steps-item-title {
     color: #1d1d1db2;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     line-height: 15.68px;
   }
@@ -125,7 +125,7 @@ body {
     > .ant-steps-item-container
     > .ant-steps-item-content
     > .ant-steps-item-title {
-    font-size: 12px !important;
+    font-size: 10px !important;
     color: #1d1d1db2;
   }
 

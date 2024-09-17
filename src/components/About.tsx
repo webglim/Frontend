@@ -67,7 +67,7 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
         <Image alt="" src={laptop} />
       </div>
       <div className="w-1/2  flex flex-col md:gap-[59px] gap-[20px]">
-        <div className="flex flex-col gap-[8px]">
+        <div className="flex flex-col gap-[8px] text-black">
           <p className="font-[500] md:text-[20px] text-[12px] leading-[25.2px]">
             About us
           </p>

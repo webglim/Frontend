@@ -75,10 +75,10 @@ const Service = () => {
     <div className="flex flex-col  md:px-[4%] px-[2%] py-4 bg-white md:gap-[32px] gap-[14px]">
       <div className="pb-4">
         <div className="flex flex-col gap-[8px]">
-          <p className="text-[#001404B2] md:text-[20px] text-[14px] leading-[25.2px] font-[500]">
+          <p className="text-[#001404B2] md:text-[20px] text-[14px] md:leading-[25.2px] font-[500]">
             Quickpay Provide Best Services & Secure Investment Platform
           </p>
-          <p className="text-[#E8A000] md:text-[24px] text-[20px] leading-[32px] font-[700]">
+          <p className="text-[#E8A000] md:text-[24px] text-[14px] md:leading-[32px] font-[700]">
             Service
           </p>
         </div>
@@ -106,7 +106,7 @@ const Service = () => {
         </div>
       </div>
       <div className="py-4 flex flex-row  md:gap-[58px] gap-[20px] items-center">
-        <div className="w-1/2 flex flex-col md:gap-[32px] gap-[20px]">
+        <div className="w-1/2 flex flex-col md:gap-[32px] gap-[14px]">
           <div className="flex flex-col gap-[8px]">
             <div className="flex flex-col md:gap-[8px] gap-[2px]">
               <p className="text-[#001404B2] md:text-[20px] text-[10px] font-[500] md:leading-[25.2px]">
@@ -145,7 +145,7 @@ const Service = () => {
         <div className="md:w-1/2 w-full">
           <Image src={image} alt="" className="md:h-[629px] md:w-[629px]" />
         </div>
-        <div className="md:w-1/2 w-full flex flex-col md:gap-[32px] gap-[20px]">
+        <div className="md:w-1/2 w-full flex flex-col md:gap-[32px] gap-[10px]">
           <div className="px-[16px] flex flex-col gap-[7px]">
             <p className="md:text-[20px] text-[10px] font-[500] md:eading-[25.2px] text-[#001404B2]">
               How It Works
@@ -175,7 +175,7 @@ const Service = () => {
           <p className="font-[500] text-[20px] md:leading-[25.2px] text-[#001404B2]">
             Testimonial
           </p>
-          <p className="font-[700] md:text-[32px] text-[18px] md:leading-[43.58px] mb-2 md:mb-0">
+          <p className="font-[700] md:text-[32px] text-[18px] md:leading-[43.58px] mb-2 md:mb-0 text-black">
             What People Say <span className="text-[#E8A000]">About Us</span>
           </p>
         </div>
