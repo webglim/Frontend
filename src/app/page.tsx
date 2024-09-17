@@ -10,12 +10,10 @@ import { LayoutProvider } from "@/components/context";
 import chatbot from "../../public/images/chatbot.svg";
 import Link from "next/link";
 import Image from "next/image";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
 export default function Home() {
   const aboutUsRef = useRef(null);
   const [shouldAboutUs, setShouldAboutUs] = useState(false);
-  const tawkMessengerRef = useRef<any>();
   const scrollToAboutUs = () => {
     setShouldAboutUs(true);
   };
@@ -23,16 +21,9 @@ export default function Home() {
   const handleScrollComplete = () => {
     setShouldAboutUs(false); // Reset the state after scrolling
   };
-  const handleMinimize = () => {
-    tawkMessengerRef.current.minimize();
-  };
+
   return (
     <div className={"overflow-x-hidden"}>
-      {/* <TawkMessengerReact
-        propertyId="66e9d06c4cbc4814f7d996b7"
-        widgetId="default"
-        useRef={tawkMessengerRef}
-      /> */}
       <Navbar scrollToAboutUs={scrollToAboutUs} />
       <Hero />
       <About
