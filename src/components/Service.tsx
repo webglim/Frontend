@@ -189,10 +189,10 @@ const Service = () => {
                   className="md:w-[60px] md:h-[60px] w-[30px] h-[30px] rounded-[30px]"
                 />
                 <div className="flex flex-col gap-[3.68px] justify-center">
-                  <p className="font-[600] md:text-[23.6px] text-[10px] md:leading-[28.77px] text-[#000000]">
+                  <p className="font-[600] md:text-[23.6px] text-[8px] md:leading-[28.77px] text-[#000000]">
                     Arttu Vatanen
                   </p>
-                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[10px] leading-[16.44px]">
+                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] leading-[16.44px]">
                     Retiree
                   </p>
                 </div>
@@ -218,10 +218,10 @@ const Service = () => {
                   className="md:w-[60px] md:h-[60px] rounded-[30px] w-[30px] h-[30px]"
                 />
                 <div className="flex flex-col gap-[3.68px] justify-center">
-                  <p className="font-[600] md:text-[23.6px] text-[10px] md:leading-[28.77px] text-[#000000]">
+                  <p className="font-[600] md:text-[23.6px] text-[8px] md:leading-[28.77px] text-[#000000]">
                     Tammy Jenkins
                   </p>
-                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[10px] leading-[16.44px]">
+                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] leading-[16.44px]">
                     small business owner
                   </p>
                 </div>
@@ -249,10 +249,10 @@ const Service = () => {
                   className="md:w-[60px] md:h-[60px] w-[30px] h-[30px] rounded-[30px]"
                 />
                 <div className="flex flex-col gap-[3.68px] justify-center">
-                  <p className="font-[600] md:text-[23.6px] text-[10px] leading-[28.77px] text-[#000000]">
+                  <p className="font-[600] md:text-[23.6px] text-[8px] leading-[28.77px] text-[#000000]">
                     Mia Morton
                   </p>
-                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[10px] leading-[16.44px]">
+                  <p className="text-[#000000B2] font-[500] md:text-[13.49px] text-[6px] leading-[16.44px]">
                     entrepremeurs
                   </p>
                 </div>
