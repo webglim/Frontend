@@ -18,11 +18,59 @@ const DepositModal = ({ visible, onClose }: any) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBTCWalletCopied, setIsBTCWalletCopied] = useState(false);
-  const BTCWallet = "bc1qd06d9s21q60zjn0vfxcuxprdaamupz7m6e79";
+  const [isEthereumWalletCopied, setIsEthereumWalletCopied] = useState(false);
+  const [isUSDTWalletCopied, setIsUSDTWalletCopied] = useState(false);
+  const [isBNBWalletCopied, setIsBNBWalletCopied] = useState(false);
+  const [isLiteWalletCopied, setIsLiteWalletCopied] = useState(false);
+  const [isSolanaWalletCopied, setIsSolanaWalletCopied] = useState(false);
+  const [isBNBsmartWalletCopied, setIsBNBsmartWalletCopied] = useState(false);
+  const BTCWallet = "bc1qg0xghuz6t255704a82z0udyc4rhvpjp7txshml";
+  const EthereumWallet = "0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2";
+  const USDTWallet = "TBhZHJuCNAum4r8WHCKq3oAMUs2xifipNJ";
+  const BNBWallet = "bnb1lcc2d98cdydjpxf9jrcwvav3qqf4fwctk9e8m3";
+  const LiteWallet = "ltc1qs6wnvcfx6ayqarar93kk3eeje4eajtcwggf8s6";
+  const SolanaWallet = "AqFvArcyxJ1Peib677jdzVc6CHYURK2o4Fg27djnnQeV";
+  const BNBsmartWallet = "0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2";
   const handleBTCWalletCopyClick = () => {
     navigator.clipboard
       .writeText(BTCWallet)
       .then(() => setIsBTCWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleEthereumWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsEthereumWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleUSDTWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsUSDTWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleBNBWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsBNBWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleLiteWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsLiteWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleSolanaWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsSolanaWalletCopied(true))
+      .catch((err) => toast.error("Failed to copy to clipboard", err));
+  };
+  const handleBNBsmartWalletCopyClick = () => {
+    navigator.clipboard
+      .writeText(BTCWallet)
+      .then(() => setIsBNBsmartWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const [formData, setFormData] = useState<FormData>({
@@ -103,7 +151,7 @@ const DepositModal = ({ visible, onClose }: any) => {
       }`}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="bg-white md:w-1/3 w-[95%] py-[14.83px] md:px-[18.53px] px-[10px] rounded-[4px] gap-[33.36px] z-10 flex flex-col">
+      <div className="bg-white md:w-1/3 w-[95%] max-h-[80%] py-[14.83px] overflow-y-scroll md:px-[18.53px] px-[10px] rounded-[4px] md:gap-[33.36px] gap-[14px] z-10 flex flex-col">
         <div className="flex flex-row justify-between items-center">
           <p className="font-[600] text-[24px] leading-[36px] text-[#333333]">
             Bitcoin
@@ -141,19 +189,146 @@ const DepositModal = ({ visible, onClose }: any) => {
           <div className="bg-[#EDEFFF] mt-4 p-[16px] rounded-[8px] justify-between flex flex-col gap-[18.53px]">
             <ul className="font-[500] list-disc text-[14.83px] leading-[22.24px] text-[#2E2A39] w-full pl-[16px]">
               <li>Instruction: Send money to wallet address</li>
-              <li>Wallet address:</li>
             </ul>
-            <div className="flex md:flex-row flex-col justify-between items-center">
-              <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
-                bc1qd06d9s21q60zjn0vfxcuxprdaamupz7m6e79
-              </p>
-              <button
-                onClick={handleBTCWalletCopyClick}
-                disabled={isBTCWalletCopied}
-                className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
-              >
-                {isBTCWalletCopied ? "Copied!" : "Copy"}
-              </button>
+            <div className="flex md:flex-row flex-col justify-between  text-left">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39] text-left">
+                  Bitcoin
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39] text-left">
+                  bc1qg0xghuz6t255704a82z0udyc4rhvpjp7txshml
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleBTCWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isBTCWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between ">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  Ethereum
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleEthereumWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isEthereumWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  USDT trc 20
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  TBhZHJuCNAum4r8WHCKq3oAMUs2xifipNJ
+                </p>
+              </div>
+              <div className="flex flex-ow items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleUSDTWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isUSDTWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  BNB beacon chain
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  bnb1lcc2d98cdydjpxf9jrcwvav3qqf4fwctk9e8m3
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleBNBWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isBNBWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between ">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  Lite coin
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  ltc1qs6wnvcfx6ayqarar93kk3eeje4eajtcwggf8s6
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleLiteWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isLiteWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between ">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  Solana
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  AqFvArcyxJ1Peib677jdzVc6CHYURK2o4Fg27djnnQeV
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleSolanaWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isSolanaWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <div className="flex md:flex-row flex-col justify-between ">
+              <div>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  BNB smart chain
+                </p>
+                <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39]">
+                  0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-center">
+                <button
+                  type="button"
+                  onClick={handleBNBsmartWalletCopyClick}
+                  //   disabled={isBTCWalletCopied}
+                  className="py-1 px-2  rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                >
+                  {isBNBsmartWalletCopied ? "Copied!" : "Copy"}
+                </button>
+              </div>
             </div>
           </div>
           <button

@@ -26,6 +26,7 @@ const Page = () => {
   const [depositModalVisible, setDepositModalVisible] = useState<any>(false);
   const [data, setData] = useState<any>();
   const [transactions, setTransactions] = useState<any>(null);
+  const [withdrawal, setWithdrawal] = useState<any>();
   const [users, setUsers] = useState<any>(null);
   const [deposit, setDeposit] = useState<any>(null);
   const [transactionsLoading, setTransactionsLoading] =
@@ -35,6 +36,7 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState<DocumentLoadingState>({});
+  const [isapprove, setApprove] = useState<DocumentLoadingState>({});
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -68,6 +70,10 @@ const Page = () => {
         setData(userProfileResponse.data.data);
 
         // Fetch investment data
+        const withdrawalResponse = await axios.get(
+          "https://web-gold-limited-backend.onrender.com/api/v1/withdrawal?pagination_size=1000000000000",
+          config
+        );
         const investmentResponse = await axios.get(
           "https://web-gold-limited-backend.onrender.com/api/v1/investment/admin-analytics",
           config
@@ -79,7 +85,12 @@ const Page = () => {
         console.log("allUsers response.data", allUsers.data);
         setUsers(allUsers.data.data);
         console.log("Investment response.data", investmentResponse.data);
+        console.log(
+          "withdrawalResponse response.data",
+          withdrawalResponse.data
+        );
         setInvestment(investmentResponse.data.data);
+        setWithdrawal(withdrawalResponse.data.data);
 
         // Fetch transactions and deposits only if userId exists
         if (userId) {
@@ -180,7 +191,127 @@ const Page = () => {
       }));
     }
   };
+  const handleApprove = async (id: any, confirmed: any) => {
+    setApprove((prevLoading: any) => ({
+      ...prevLoading,
+      [id]: true,
+    }));
+    const token = localStorage.getItem("token");
 
+    if (!token) {
+      throw new Error("No token found");
+    }
+
+    // Set up the headers including the token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, // Replace with your authorization scheme
+      },
+    };
+    try {
+      const response = await axios.post(
+        `https://web-gold-limited-backend.onrender.com/api/v1/withdrawal/${id}`,
+        {
+          confirmed,
+        },
+        config
+      );
+
+      if (response.status === 201) {
+        console.log("response.data.token", response);
+        toast.success(response.data.message);
+        // Handle successful signup (e.g., redirect to login or verification page)
+      }
+    } catch (error: any) {
+      if (error.response) {
+        console.log("error", error.response.data.message);
+        toast.error(error.response.data.message);
+        // Handle validation or server errors from backend
+        const serverErrors =
+          error.response.data.errors || error.response.data.message;
+        setErrors(serverErrors);
+      } else if (error.request) {
+        // Network error or no response from the server
+        alert(
+          "Network error. Please check your internet connection and try again."
+        );
+      } else {
+        // Other unknown errors
+        alert("An unexpected error occurred. Please try again.");
+      }
+    } finally {
+      setApprove((prevLoading: any) => ({
+        ...prevLoading,
+        [id]: false,
+      }));
+    }
+  };
+
+  const Withdraw = () => {
+    return (
+      <div>
+        {transactionsLoading ? (
+          <Loader />
+        ) : withdrawal && withdrawal.length > 0 ? (
+          <>
+            <div className="p-[18px] flex flex-row md:gap-[29.45px] gap-[10px] items-center">
+              <div className="w-1/3">
+                <p>name</p>
+              </div>
+
+              <div className="w-1/3">
+                <p>Amount</p>
+              </div>
+            </div>
+            {withdrawal.map((withdrawals: any, index: any) => (
+              <div key={index}>
+                <div
+                  className={`flex flex-row items-center  p-[18px]  md:gap-[29.45px] gap-[10px] ${
+                    index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
+                  }`}
+                >
+                  <div className="w-1/3 flex flex-row items-center gap-[4px]">
+                    <p>{withdrawals?.user?.firstName}</p>
+                  </div>
+
+                  <div className="w-1/3">
+                    <p>{withdrawals?.amount}</p>
+                  </div>
+                  <div className="flex flex-row items-center gap-2">
+                    {withdrawals?.confirmed === false && (
+                      <button
+                        className="px-3 py-1 bg-green-300 rounded-sm"
+                        onClick={() => handleApprove(withdrawals.id, true)}
+                      >
+                        {isapprove[withdrawals?.id] ? "Loading..." : " Approve"}
+                      </button>
+                    )}
+                    {withdrawals?.confirmed === true && (
+                      <button
+                        className="px-3 py-1 bg-red-400 rounded-sm"
+                        onClick={() => handleApprove(withdrawals.id, false)}
+                      >
+                        {isapprove[withdrawals?.id] ? "Loading..." : " Decline"}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className=" w-full flex flex-col items-center justify-center gap-[8px] pb-10">
+            <Image src={notransact} alt="" className="mt-12" />
+            <div className="flex flex-col gap-[8px] mt-8 items-center justify-center">
+              <p className="font-[600] text-[25.65px] leading-[14.63px] text-[#333333]">
+                No Withdrawal
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
   const Invest = () => {
     return (
       <div>
@@ -188,14 +319,12 @@ const Page = () => {
           <Loader />
         ) : users && users.length > 0 ? (
           <>
-            <div className="p-[18px] flex flex-row gap-[29.45px] items-center">
-              <div className="w-1/3">
+            <div className="p-[18px] flex flex-row md:gap-[29.45px] gap-[10px] items-center">
+              <div className="w-1/2">
                 <p>First Name</p>
               </div>
-              <div className="w-1/3">
-                <p>Last Name</p>
-              </div>
-              <div className="w-1/3">
+
+              <div className="w-1/2">
                 <p>Email</p>
               </div>
             </div>
@@ -203,17 +332,16 @@ const Page = () => {
               <div key={index}>
                 <Link href={`/adminSettings/${transaction?.id}`}>
                   <div
-                    className={`flex flex-row items-center  p-[18px]  gap-[29.45px] ${
+                    className={`flex flex-row items-center  p-[18px]  md:gap-[29.45px] gap-[10px] ${
                       index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
                     }`}
                   >
-                    <div className="w-1/3">
+                    <div className="w-1/2 flex flex-row items-center gap-[4px]">
                       <p>{transaction?.firstName}</p>
-                    </div>
-                    <div className="w-1/3">
                       <p>{transaction?.lastName}</p>
                     </div>
-                    <div className="w-1/3">
+
+                    <div className="w-1/2">
                       <p>{transaction?.email}</p>
                     </div>
                   </div>
@@ -241,43 +369,43 @@ const Page = () => {
           <Loader />
         ) : deposit && deposit.length > 0 ? (
           <>
-            <div className="p-[18px] flex flex-row gap-[29.45px] items-center font-[800]">
-              <div className="w-1/4">
+            <div className="p-[18px] flex flex-row md:gap-[29.45px] gap-[8px] items-center font-[800]">
+              <div className="w-1/3">
                 <p>Amount Deposited</p>
               </div>
-              <div className="w-1/4">
+              {/* <div className="w-1/4">
                 <p>Date</p>
-              </div>
-              <div className="w-1/4">
+              </div> */}
+              <div className="w-1/3">
                 <p>Status</p>
               </div>
-              <div className="w-1/4">
+              <div className="w-1/3">
                 <p>User</p>
               </div>
             </div>
             {deposit.map((deposits: any, index: any) => (
               <div key={index}>
                 <div
-                  className={`flex flex-row items-center  p-[18px]  gap-[29.45px] ${
+                  className={`flex flex-row items-center  md:p-[18px] p-[8px]  md:gap-[29.45px] gap-[8px] ${
                     index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
                   }`}
                 >
-                  <div className="w-1/4">
+                  <div className="w-1/3">
                     <p>${deposits?.amount}</p>
                   </div>
-                  <div className="w-1/4">
+                  {/* <div className="w-1/4">
                     <p>{FormatDate(deposits?.createdAt)}</p>
-                  </div>
-                  <div className="w-1/4">
+                  </div> */}
+                  <div className="w-1/3">
                     <p className="text-[#F6A41B]">
                       {deposits.confirmed === false ? "Pending" : "Confirmed"}
                     </p>
                   </div>
-                  <div className="flex flex-row items-center justify-between w-1/4">
+                  <div className="flex flex-row items-center justify-between w-1/3">
                     <p>{deposits?.user?.firstName}</p>
                     {deposits?.confirmed === false && (
                       <button
-                        className="bg-[#37D159] px-5 py-2 rounded-[8px] text-white"
+                        className="bg-[#37D159] md:px-5 py-2 px-2 rounded-[8px] text-white text-[8px] md:text-[14px]"
                         onClick={() => {
                           handleSubmit(deposits?.id);
                         }}
@@ -317,6 +445,11 @@ const Page = () => {
       key: "2",
       label: "All Users",
       children: <Invest />,
+    },
+    {
+      key: "",
+      label: "All Withdrawals",
+      children: <Withdraw />,
     },
   ];
   return (
@@ -362,42 +495,13 @@ const Page = () => {
           </div>
         </div>
       </div>
-      {/* <div className="bg-[#1B1C1F] rounded-[6.41px] flex md:flex-row flex-col py-[30px] px-[80px] justify-between">
-        <div className="flex md:flex-row flex-col gap-[24.5px] items-center">
-          <div className="flex flex-col gap-4">
-            {" "}
-            <Progress type="circle" percent={75} />
-            <p className="font-[400] text-[13.25px] leading-[19.91px] text-[#FFFFFF]">
-              Avg. interest Rate
-            </p>
-          </div>
-          <div className="flex flex-col gap-[5.74px]">
-            <p className="text-[48.61px] text-white font-[600] leading-[66.19px]">
-              ${formatToTwoDecimalPlaces(investment?.portfolioValue)}
-            </p>
-            <p className="text-[19.71px] text-white font-[400] leading-[24.02px]">
-              Portfolio value
-            </p>
-          </div>
-        </div>
-        <div className="flex justify-end items-center">
-          {" "}
-          <div className="rounded-[6.51px] py-[5px] px-[20.36px] border-[#FFFFFF] border-[0.81px] font-[600] text-[13.77px] leading-[18.75px] text-[#FFFFFF]">
-            Invest Now
-          </div>
-        </div>
-      </div> */}
-      <div className="p-[10px] flex flex-col gap-[10px]">
+
+      <div className="md:p-[10px] flex flex-col gap-[10px]">
         <div className="flex flex-col">
           <p className="font-[600] text-[24px] leading-[14.84px] text-[#333333CC]">
             Transactions
           </p>
-          {/* <div className="flex flex-row gap-[8px] items-center ">
-            <p className="font-[700] text-[14px] leading-[14.84px] text-[#333333CC]">
-              View More
-            </p>
-            <MdOutlineChevronRight />
-          </div> */}
+
           <Tabs
             defaultActiveKey="1"
             items={items}

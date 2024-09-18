@@ -60,7 +60,7 @@ const About = ({ aboutUsRef, shouldAboutUs, onScrollComplete }: any) => {
 
   return (
     <div
-      className="flex flex-row  items-center md:px-[4%] px-[2%] py-8 bg-white"
+      className="flex flex-row  items-center md:px-[4%] px-[2%] pt-4 bg-white"
       ref={aboutUsRef}
     >
       <div className="w-1/2  bg-bgTwo bg-no-repeat bg-cover  bg-center">

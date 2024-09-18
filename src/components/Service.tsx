@@ -106,7 +106,7 @@ const Service = () => {
         </div>
       </div>
       <div className="py-4 flex flex-row  md:gap-[58px] gap-[20px] items-center">
-        <div className="w-1/2 flex flex-col md:gap-[32px] gap-[14px]">
+        <div className="w-1/2 flex flex-col md:gap-[32px] gap-[8px]">
           <div className="flex flex-col gap-[8px]">
             <div className="flex flex-col md:gap-[8px] gap-[2px]">
               <p className="text-[#001404B2] md:text-[20px] text-[10px] font-[500] md:leading-[25.2px]">
@@ -131,7 +131,7 @@ const Service = () => {
           </div>
           <div>
             <Link href="/dashboard">
-              <button className="md:py-[14px] py-[8px] md:px-[24px] px-[12px] bg-[#FBAD00] rounded-[4px] text-white md:text-[16px] text-[8px] font-[600] md:leading-[20.16px]">
+              <button className="md:py-[14px] py-[5px] md:px-[24px] px-[12px] bg-[#FBAD00] rounded-[4px] text-white md:text-[16px] text-[8px] font-[600] md:leading-[20.16px]">
                 Invest Now
               </button>
             </Link>
@@ -147,10 +147,10 @@ const Service = () => {
         </div>
         <div className="md:w-1/2 w-full flex flex-col md:gap-[32px] gap-[10px]">
           <div className="px-[16px] flex flex-col gap-[7px]">
-            <p className="md:text-[20px] text-[10px] font-[500] md:eading-[25.2px] text-[#001404B2]">
+            <p className="md:text-[20px] text-[10px] font-[500] md:leading-[25.2px] text-[#001404B2]">
               How It Works
             </p>
-            <p className="md:text-[32px] text-[10px] font-[700] md:leading-[43.58px] leading-[28px] text-[#001404B2] ">
+            <p className="md:text-[32px] text-[10px] font-[700] md:leading-[43.58px]  text-[#001404B2] ">
               Transform Your{" "}
               <span className="text-[#E8A000]">Holdings into Profits</span>
             </p>
@@ -163,7 +163,7 @@ const Service = () => {
           <Steps direction="vertical" current={0} items={item} />
           <div>
             <Link href="/dashboard">
-              <button className="md:py-[14px] py-[7px] md:px-[16px] px-[8px] rounded-[4px] bg-[#FBAD00] text-white font-[600] md:text-[16px] text-[8px] leading-[20.16px]">
+              <button className="md:py-[14px] py-[4px] md:px-[16px] px-[8px] rounded-[4px] bg-[#FBAD00] text-white font-[600] md:text-[16px] text-[8px] leading-[20.16px]">
                 Get Started
               </button>
             </Link>
@@ -197,9 +197,9 @@ const Service = () => {
                   </p>
                 </div>
               </div>
-              <Rate disabled defaultValue={5} className="mt-4" />
+              <Rate disabled defaultValue={5} className="md:mt-4" />
             </div>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] md:mt-4">
               It Pay’s!
             </p>
             <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] md:mt-6">
@@ -226,9 +226,9 @@ const Service = () => {
                   </p>
                 </div>
               </div>
-              <Rate disabled defaultValue={5} className="mt-4" />
+              <Rate disabled defaultValue={5} className="md:mt-4" />
             </div>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] md:mt-4">
               Awesome! I’love it!!
             </p>
             <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] md:mt-6">
@@ -257,12 +257,12 @@ const Service = () => {
                   </p>
                 </div>
               </div>
-              <Rate disabled defaultValue={5} className="mt-4" />
+              <Rate disabled defaultValue={5} className="md:mt-4" />
             </div>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] mt-4">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[10px] leading-[20.16px] md:mt-4">
               The Best
             </p>
-            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] mt-6">
+            <p className="text-[#00000099] font-[500] md:text-[16px] text-[5px] md:leading-[20.16px] md:mt-6">
               Consistent payments and exceptional service. Whether you're a
               seasoned crypto expert or just starting out, this platform offers
               top-notch information and ease of use. My rating: 5/5!
@@ -282,7 +282,7 @@ const Service = () => {
         <div className="flex flex-row  md:gap-[58px] gap-[8px]">
           <div className="flex flex-col w-1/3 rounded-[10px]  shadow-md bg-white px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[8px] md:leading-[32.68px] text-white">
                 Silver Plan
               </p>
             </div>
@@ -342,7 +342,7 @@ const Service = () => {
           </div>
           <div className="flex flex-col w-1/3  rounded-[10px]  shadow-md  bg-[#FFAA00] px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[8px] md:leading-[32.68px] text-white">
                 Gold Plan
               </p>
             </div>
@@ -402,7 +402,7 @@ const Service = () => {
           </div>
           <div className="flex flex-col w-1/3 rounded-[10px]  shadow-md bg-white px-[4px]">
             <div className="rounded-tl-[10px] rounded-tr-[10px] bg-[#FBAD00] py-[10px] px-[25px]">
-              <p className="text-center font-[600] md:text-[24px] text-[12px] md:leading-[32.68px] text-white">
+              <p className="text-center font-[600] md:text-[24px] text-[8px] md:leading-[32.68px] text-white">
                 Platinum Plan
               </p>
             </div>

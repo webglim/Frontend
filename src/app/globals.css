@@ -137,7 +137,7 @@ body {
     color: #1d1d1db2;
     font-size: 8px !important;
     font-weight: 500;
-    line-height: 20.16px;
+    line-height: 10.16px !important;
   }
   .ant-steps .ant-steps-item-icon {
     width: 18px !important;
@@ -158,5 +158,10 @@ body {
     > .ant-steps-item
     .ant-steps-item-description {
     padding-bottom: 5px !important;
+  }
+  .ant-steps.ant-steps-vertical > .ant-steps-item .ant-steps-item-content {
+    display: block;
+    min-height: 18px !important;
+    overflow: hidden;
   }
 }

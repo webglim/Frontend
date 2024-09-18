@@ -17,22 +17,22 @@ const Footer = ({ scrollToAboutUs }: any) => {
           </p>
         </div>
         <div className="flex md:flex-row flex-col md:gap-[51px] gap-[24px] md:w-[50%] w-full md:justify-end">
-          <div className="flex flex-col gap-[24px]  mt-4 md:mt-0">
-            <p className="font-[600] text-white text-[14px] leading-[24.51px]">
+          <div className="flex flex-col md:gap-[24px]  mt-4 md:mt-0">
+            <p className="font-[600] text-white text-[8px] leading-[24.51px]">
               Quick links
             </p>
             <p
-              className="font-[600] text-white text-[14px] leading-[24.51px] hover:cursor-pointer"
+              className="font-[600] text-white text-[8px] leading-[24.51px] hover:cursor-pointer"
               onClick={scrollToAboutUs}
             >
               About us
             </p>
-            <p className="font-[600] text-white text-[14px] leading-[24.51px]">
+            <p className="font-[600] text-white text-[8px] leading-[24.51px]">
               Support
             </p>
           </div>
           <div className="flex flex-col gap-[22px]">
-            <p className="font-[600] text-[18px] leading-[24.51px] text-white">
+            <p className="font-[600] text-[8px] leading-[24.51px] text-white">
               Contact
             </p>
             <div className="flex flex-row gap-[24px] items-center justify-between">

@@ -61,6 +61,7 @@ const Login = () => {
         console.log("response.data.token", response);
         toast.success(response.data.message);
         router.push("/dashboard");
+        
         // Handle successful signup (e.g., redirect to login or verification page)
       }
     } catch (error: any) {

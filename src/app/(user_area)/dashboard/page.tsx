@@ -262,22 +262,18 @@ const Page = () => {
         <div className="flex flex-col gap-[6.28px]">
           <div className="flex flex-row gap-[5.93px] items-center">
             <p className="font-[400] text-[14.23px] leading-[19.38px] text-[#FFFFFF]">
-              Available Balance
+              Wallet Balance
             </p>
-            <FiEye color="white" />
+            {/* <FiEye color="white" /> */}
           </div>
           <div className="flex flex-row gap-[9.49px] items-center">
             <p className="font-[600] text-[56.93px] leading-[77.52px] text-[#FFFFFF]">
-              ${formatToTwoDecimalPlaces(data?.wallet)}
+              €{formatToTwoDecimalPlaces(data?.wallet)}
             </p>
             <p className="font-[600] text-[20.4px] leading-[27.78px] text-[#FFFFFF]">
-              USD
+              Euros
             </p>
           </div>
-          {/* <div className="flex flex-row gap-[8.67px] font-[400] text-[11.46px] leading-[15.61px] text-[#FFFFFFB2]">
-            <p>≈</p>
-            <p>0.0085129BTC</p>
-          </div> */}
         </div>
         <div className="flex flex-row gap-[16px] items-center mt-4 md:mt-0">
           <div
@@ -295,29 +291,42 @@ const Page = () => {
         </div>
       </div>
       <div className="flex md:flex-row flex-col items-center gap-[15px]">
-        <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
             <Image src={vector} alt="" />
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              ${formatToTwoDecimalPlaces(investment?.totalInvested)}
+              €{formatToTwoDecimalPlaces(investment?.totalInvested)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Invested
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
             <Image src={dollar} alt="" />
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              ${formatToTwoDecimalPlaces(investment?.totalEarned)}
+              €{formatToTwoDecimalPlaces(investment?.totalEarned)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Earned
+            </p>
+          </div>
+        </div>
+        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+          <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+            <Image src={dollar} alt="" />
+          </div>
+          <div>
+            <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
+              €{formatToTwoDecimalPlaces(investment?.availableBalance)}
+            </p>
+            <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
+              Avaliable balance
             </p>
           </div>
         </div>
@@ -336,7 +345,7 @@ const Page = () => {
           </div>
           <div className="flex flex-col gap-[5.74px]">
             <p className="text-[48.61px] text-white font-[600] leading-[66.19px]">
-              ${formatToTwoDecimalPlaces(investment?.portfolioValue)}
+              €{formatToTwoDecimalPlaces(investment?.portfolioValue)}
             </p>
             <p className="text-[19.71px] text-white font-[400] leading-[24.02px]">
               Portfolio value

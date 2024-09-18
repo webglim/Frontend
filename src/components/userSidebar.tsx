@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
-``;
+import { TbLogout2 } from "react-icons/tb";
 import { GrClose } from "react-icons/gr";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -15,8 +15,10 @@ import { RiDashboardLine } from "react-icons/ri";
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { IoCloseSharp } from "react-icons/io5";
 import { RiUserSettingsLine } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 
 function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
+  const router = useRouter();
   const pathname = usePathname();
   const isTab = useMediaQuery({ query: "(min-width:700px)" });
   // const [isOpen, setIsOpen] = useState(isTab);
@@ -132,6 +134,18 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
                 </p>
               </Link>
             </li>
+            <div
+              className="flex flex-row items-center gap-[16px] px-[20px] py-[10px] rounded-[8px] bg-red-400 w-1/2"
+              onClick={() => {
+                router.push("/");
+                localStorage.removeItem("token");
+              }}
+            >
+              <TbLogout2 className="w-[24px] h-[24px] text-white" />{" "}
+              <p className="font-[400] text-[16px] leading-[21.79px] ">
+                Logout
+              </p>
+            </div>
           </ul>
         </div>
       </motion.div>
