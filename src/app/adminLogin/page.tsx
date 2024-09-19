@@ -7,6 +7,7 @@ import Link from "next/link";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const page = () => {
   const router = useRouter();
@@ -22,6 +23,11 @@ const page = () => {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePassword = (e: any) => {
+    e.preventDefault();
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   const validateForm = () => {
     const newErrors: Partial<FormData> = {};
@@ -141,14 +147,26 @@ const page = () => {
                     )}
                   </div>
                   <div>
-                    <input
-                      name="password"
-                      type="password"
-                      className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] w-full"
-                      placeholder="Password"
-                      value={formData.password}
-                      onChange={handleChange}
-                    />
+                    <div className="flex flex-row items-center p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] bg-[#E8F0FE]">
+                      <input
+                        name="password"
+                        type={isPasswordVisible ? "password" : "text"}
+                        className="bg-[#E8F0FE] w-full"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                      />
+                      <span
+                        className={`text-[#C0C0C0] text-2xl px-2`}
+                        onClick={togglePassword}
+                      >
+                        {isPasswordVisible ? (
+                          <AiOutlineEyeInvisible />
+                        ) : (
+                          <AiOutlineEye />
+                        )}
+                      </span>
+                    </div>
                     {errors.password && (
                       <p className="text-red-600 text-[8px]">
                         {errors.password}
