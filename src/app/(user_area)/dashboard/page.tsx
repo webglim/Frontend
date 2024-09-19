@@ -157,7 +157,7 @@ const Page = () => {
                     <p>{transaction?.uniqueId}</p>
                   </div>
                   <div className="w-1/4">
-                    <p>${transaction?.amount}</p>
+                    <p>€{transaction?.amount}</p>
                   </div>
                   <div className="w-1/4">
                     <p>{FormatDate(transaction?.createdAt)}</p>
@@ -213,7 +213,7 @@ const Page = () => {
                   }`}
                 >
                   <div className="w-1/3">
-                    <p>${deposits?.amount}</p>
+                    <p>€{deposits?.amount}</p>
                   </div>
                   <div className="w-1/3">
                     <p>{FormatDate(deposits?.createdAt)}</p>

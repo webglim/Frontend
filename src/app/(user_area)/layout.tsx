@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import DashboardProtection from "@/components/dashboardProtection";
 import { IoMenuSharp } from "react-icons/io5";
+import Script from "next/script";
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const isTab = useMediaQuery({ query: "(min-width:700px)" });
@@ -82,6 +83,18 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
             <div className={`overflow-y-scroll `}>{children}</div>
           </div>
         </div>
+        <Script id="smartsupp-chat" strategy="afterInteractive">
+          {`
+            var _smartsupp = _smartsupp || {};
+            _smartsupp.key = 'd7037c63f6af6904a18172dd705d30ab8273b3ce';
+            window.smartsupp||(function(d) {
+              var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+              s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+              c.type='text/javascript';c.charset='utf-8';c.async=true;
+              c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+            })(document);
+          `}
+        </Script>
       </div>
     </DashboardProtection>
   );

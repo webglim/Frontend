@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"overflow-x-hidden"}>
-        <Script id="smartsupp-chat" strategy="afterInteractive">
+        {/* <Script id="smartsupp-chat" strategy="afterInteractive">
           {`
             var _smartsupp = _smartsupp || {};
             _smartsupp.key = 'd7037c63f6af6904a18172dd705d30ab8273b3ce';
@@ -31,7 +31,7 @@ export default function RootLayout({
               c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
             })(document);
           `}
-        </Script>
+        </Script> */}
         <ToastContainer />
         {children}
       </body>

@@ -275,7 +275,7 @@ const Page = () => {
                   </div>
 
                   <div className="w-1/3">
-                    <p>{withdrawals?.amount}</p>
+                    <p>€{withdrawals?.amount}</p>
                   </div>
                   <div className="flex flex-row items-center gap-2">
                     {withdrawals?.confirmed === false && (
@@ -391,7 +391,7 @@ const Page = () => {
                   }`}
                 >
                   <div className="w-1/3">
-                    <p>${deposits?.amount}</p>
+                    <p>€{deposits?.amount}</p>
                   </div>
                   {/* <div className="w-1/4">
                     <p>{FormatDate(deposits?.createdAt)}</p>
