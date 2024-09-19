@@ -456,12 +456,12 @@ const Page = () => {
     <div className="px-[2%] flex flex-col gap-[36px] min-h-[80vh] bg-[#F9F9F9]">
       <div className="flex md:flex-row flex-col items-center gap-[15px] mt-4">
         <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
-          <div className="w-[86.53px] h-[86.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
+          {/* <div className="w-[86.53px] h-[86.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
             <Image src={vector} alt="" />
-          </div>
+          </div> */}
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              €{formatToTwoDecimalPlaces(investment?.totalActiveInvestors)}
+              {investment?.totalActiveInvestors}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Investors
