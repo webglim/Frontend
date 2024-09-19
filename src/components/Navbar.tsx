@@ -45,12 +45,25 @@ const navData: {
     route: "/contact",
   },
 ];
-const Navbar = ({ scrollToAboutUs }: any) => {
+const Navbar = ({ scrollToAboutUs, scrollToFooter, scrollToAnnounce }: any) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const handleItemClick = (item: any) => {
     if (item.route == "/about") {
       scrollToAboutUs();
+      console.log("Item clicked:", item);
+    }
+    if (item.route == "/") {
+      router.push("/");
+      console.log("Item clicked:", item);
+    }
+    if (item.route == "/contact") {
+      scrollToFooter();
+      console.log("Item clicked:", item);
+    }
+    if (item.route == "/announcement") {
+      scrollToAnnounce();
       console.log("Item clicked:", item);
     }
   };

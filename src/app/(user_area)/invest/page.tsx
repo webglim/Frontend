@@ -59,22 +59,28 @@ const Page = () => {
     {
       id: "1",
       title: "Real Estate",
-      icon: <MdOutlineRealEstateAgent className="h-[24px] w-[24px]" />,
+      icon: (
+        <MdOutlineRealEstateAgent className="h-[24px] w-[24px] text-black" />
+      ),
     },
     {
       id: "2",
       title: "Agriculture",
-      icon: <GiGreenhouse className="h-[24px] w-[24px]" />,
+      icon: <GiGreenhouse className="h-[24px] w-[24px] text-black" />,
     },
     {
       id: "3",
       title: "Health",
-      icon: <MdOutlineHealthAndSafety className="h-[24px] w-[24px]" />,
+      icon: (
+        <MdOutlineHealthAndSafety className="h-[24px] w-[24px] text-black" />
+      ),
     },
     {
       id: "4",
       title: "Transportation",
-      icon: <MdOutlineEmojiTransportation className="h-[24px] w-[24px]" />,
+      icon: (
+        <MdOutlineEmojiTransportation className="h-[24px] w-[24px] text-black" />
+      ),
     },
   ];
 

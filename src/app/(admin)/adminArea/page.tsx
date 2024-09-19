@@ -461,7 +461,7 @@ const Page = () => {
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              ${formatToTwoDecimalPlaces(investment?.totalActiveInvestors)}
+              €{formatToTwoDecimalPlaces(investment?.totalActiveInvestors)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Investors
@@ -470,11 +470,13 @@ const Page = () => {
         </div>
         <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <Image src={dollar} alt="" />
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+              €
+            </div>
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              ${formatToTwoDecimalPlaces(investment?.totalInvested)}
+              €{formatToTwoDecimalPlaces(investment?.totalInvested)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Invested
@@ -483,11 +485,13 @@ const Page = () => {
         </div>
         <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <Image src={dollar} alt="" />
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+              €
+            </div>
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
-              ${formatToTwoDecimalPlaces(investment?.totalEarned)}
+              €{formatToTwoDecimalPlaces(investment?.totalEarned)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Total Earned

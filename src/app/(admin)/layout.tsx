@@ -4,6 +4,7 @@ import Logo from "../../../public/images/logo.svg";
 import { useState, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import AdminSidebar from "@/components/adminSidebar";
+import { IoMenuSharp } from "react-icons/io5";
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const isTab = useMediaQuery({ query: "(min-width:700px)" });
@@ -52,12 +53,17 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                 alt=""
                 className="w-[60px] h-[60px] hidden md:block"
               />
-              <Image
-                onClick={openSidebar}
-                src={Logo}
-                alt=""
-                className="w-[60px] h-[60px] md:hidden block "
-              />
+              <div className="flex flex-row items-center gap-2">
+                <IoMenuSharp
+                  className="w-[50px] h-[50px] md:hidden block  text-white"
+                  onClick={openSidebar}
+                />
+                <Image
+                  src={Logo}
+                  alt=""
+                  className="w-[60px] h-[60px] md:hidden block "
+                />
+              </div>
             </div>
             <div className="w-1/2 flex justify-end">
               {" "}

@@ -123,7 +123,7 @@ const Page = () => {
   };
 
   return (
-    <div className="px-[2%] flex flex-col gap-[36px] min-h-[80vh] overflow-y-scroll pb-20">
+    <div className="px-[2%] flex flex-col gap-[36px] min-h-[80vh] overflow-y-scroll pb-20 text-black">
       <form onSubmit={handleSubmit}>
         {/* {selected !== null && ( */}
         <div className="flex flex-col gap-[33px]">

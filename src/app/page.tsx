@@ -13,18 +13,34 @@ import Image from "next/image";
 
 export default function Home() {
   const aboutUsRef = useRef(null);
+  const footerRef = useRef(null);
+  const announceRef = useRef(null);
   const [shouldAboutUs, setShouldAboutUs] = useState(false);
+  const [shouldFooter, setShouldFooter] = useState(false);
+  const [shouldAnnounce, setShouldAnnounce] = useState(false);
   const scrollToAboutUs = () => {
     setShouldAboutUs(true);
   };
+  const scrollToFooter = () => {
+    setShouldFooter(true);
+  };
+  const scrollToAnnounce = () => {
+    setShouldAnnounce(true);
+  };
 
   const handleScrollComplete = () => {
-    setShouldAboutUs(false); // Reset the state after scrolling
+    setShouldAboutUs(false);
+    setShouldFooter(false); // Reset the state after scrolling
+    setShouldAnnounce(false); // Reset the state after scrolling
   };
 
   return (
     <div className={"overflow-x-hidden"}>
-      <Navbar scrollToAboutUs={scrollToAboutUs} />
+      <Navbar
+        scrollToAnnounce={scrollToAnnounce}
+        scrollToAboutUs={scrollToAboutUs}
+        scrollToFooter={scrollToFooter}
+      />
       <Hero />
       <About
         onScrollComplete={handleScrollComplete}
@@ -32,8 +48,16 @@ export default function Home() {
         shouldAboutUs={shouldAboutUs}
       />
       <Service />
-      <Announcement />
-      <Footer scrollToAboutUs={scrollToAboutUs} />
+      <Announcement
+        shouldAnnounce={shouldAnnounce}
+        announceRef={announceRef}
+        onScrollComplete={handleScrollComplete}
+      />
+      <Footer
+        shouldFooter={shouldFooter}
+        footerRef={footerRef}
+        onScrollComplete={handleScrollComplete}
+      />
       {/* <Link href="/support">
         <div className="  fixed bottom-8 right-8" style={{ zIndex: 1000 }}>
           <Image src={chatbot} alt="" />

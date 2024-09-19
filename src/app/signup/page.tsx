@@ -20,6 +20,7 @@ const Login = () => {
     password: string;
     confirmPassword: string;
     country: string;
+    referralCode: string;
   };
 
   const [formData, setFormData] = useState<FormData>({
@@ -29,9 +30,10 @@ const Login = () => {
     password: "",
     confirmPassword: "",
     country: "",
+    referralCode: "",
   });
   const changeHandler = (country: any) => {
-    // setValue(value);
+    setValue(country);
     const countryLabel = country?.label;
     setFormData({
       ...formData,
@@ -257,7 +259,7 @@ const Login = () => {
                   <div>
                     <Select
                       options={options}
-                      value={formData.country}
+                      value={value}
                       onChange={changeHandler}
                       className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px]"
                     />
@@ -266,6 +268,16 @@ const Login = () => {
                         {errors.country}
                       </p>
                     )}
+                  </div>
+                  <div>
+                    <input
+                      name="referralCode"
+                      type="text"
+                      className="p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] w-full"
+                      placeholder="Referral Code(Optional)"
+                      value={formData.referralCode}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <p className="text-[#1B1C1F] text-[14px] font-[600] leading-[17.07px]">

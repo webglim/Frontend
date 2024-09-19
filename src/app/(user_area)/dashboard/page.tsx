@@ -147,7 +147,7 @@ const Page = () => {
               </div>
             </div>
             {transactions.map((transaction: any, index: any) => (
-              <div>
+              <div key={index}>
                 <div
                   className={`flex flex-row items-center ${
                     index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
@@ -275,18 +275,24 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-row gap-[16px] items-center mt-4 md:mt-0">
-          <div
-            onClick={toggleDepositVisible}
-            className="rounded-[6.51px] hover:cursor-pointer py-[5px] px-[20.36px] bg-[#FFAA00] font-[600] text-[13.77px] leading-[18.75px] text-[#FFFFFF]"
-          >
-            Deposit
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-row gap-[16px] items-center mt-4 md:mt-0">
+            <div
+              onClick={toggleDepositVisible}
+              className="rounded-[6.51px] hover:cursor-pointer py-[5px] px-[20.36px] bg-[#FFAA00] font-[600] text-[13.77px] leading-[18.75px] text-[#FFFFFF]"
+            >
+              Deposit
+            </div>
+            <div
+              onClick={toggleWithdrawVisible}
+              className="rounded-[6.51px] hover:cursor-pointer py-[5px] px-[20.36px] border-[#FFFFFF] border-[0.81px] font-[600] text-[13.77px] leading-[18.75px] text-[#FFFFFF]"
+            >
+              Withdraw
+            </div>
           </div>
-          <div
-            onClick={toggleWithdrawVisible}
-            className="rounded-[6.51px] hover:cursor-pointer py-[5px] px-[20.36px] border-[#FFFFFF] border-[0.81px] font-[600] text-[13.77px] leading-[18.75px] text-[#FFFFFF]"
-          >
-            Withdraw
+          <div className="text-white flex flex-row gap-[6px] items-center">
+            <p>Referal Code:</p>
+            <p>{data?.referralCode}</p>
           </div>
         </div>
       </div>
@@ -306,7 +312,9 @@ const Page = () => {
         </div>
         <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <Image src={dollar} alt="" />
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+              €
+            </div>
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
@@ -319,7 +327,9 @@ const Page = () => {
         </div>
         <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <Image src={dollar} alt="" />
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+              €
+            </div>
           </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">

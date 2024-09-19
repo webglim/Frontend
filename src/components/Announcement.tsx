@@ -1,13 +1,30 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import photo from "../../public/images/Rectangle 116.png";
 import photo2 from "../../public/images/Rectangle 116-2.png";
 
-const Announcement = () => {
+const Announcement = ({
+  announceRef,
+  shouldAnnounce,
+  onScrollComplete,
+}: any) => {
+  useEffect(() => {
+    if (shouldAnnounce && announceRef && announceRef.current) {
+      announceRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      onScrollComplete();
+    }
+  }, [shouldAnnounce, announceRef, onScrollComplete]);
   return (
-    <div className="flex flex-col md:gap-[32px] gap-[8px] px-[4%] py-4 bg-white">
+    <div
+      className="flex flex-col md:gap-[32px] gap-[8px] px-[4%] py-4 bg-white"
+      ref={announceRef}
+    >
       <div className="flex flex-col gap-[7px] px-[16px]">
-        <p className="text-[#001404B2] font-[500] md:text-[20px] text-[12px] leading-[25.2px]">
+        <p className="text-[#001404B2] font-[700] md:text-[20px] text-[14px] leading-[25.2px]">
           Announcement
         </p>
         <p className="font-[700] md:text-[32px] text-[12px]  md:leading-[43.58px] text-[#E8A000]">

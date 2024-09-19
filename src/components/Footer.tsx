@@ -1,12 +1,21 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../public/images/logo.svg";
 import { BsFillEnvelopeFill, BsWhatsapp } from "react-icons/bs";
 import { RiWhatsappFill } from "react-icons/ri";
 
-const Footer = ({ scrollToAboutUs }: any) => {
+const Footer = ({ shouldFooter, onScrollComplete, footerRef }: any) => {
+  useEffect(() => {
+    if (shouldFooter && footerRef && footerRef.current) {
+      footerRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      onScrollComplete();
+    }
+  }, [shouldFooter, footerRef, onScrollComplete]);
   return (
-    <div className="flex flex-col   py-4 bg-[#1D1D1D]">
+    <div className="flex flex-col   py-4 bg-[#1D1D1D]" ref={footerRef}>
       <div className="px-[4%] mt-[34px] justify-between flex md:flex-row flex-col">
         <div className="flex flex-col gap-[16px] md:w-[50%] w-full">
           <Image src={logo} alt="" className="w-[114px] h-[59.26px]" />
@@ -21,10 +30,7 @@ const Footer = ({ scrollToAboutUs }: any) => {
             <p className="font-[600] text-white text-[8px] leading-[24.51px]">
               Quick links
             </p>
-            <p
-              className="font-[600] text-white text-[8px] leading-[24.51px] hover:cursor-pointer"
-              onClick={scrollToAboutUs}
-            >
+            <p className="font-[600] text-white text-[8px] leading-[24.51px] hover:cursor-pointer">
               About us
             </p>
             <p className="font-[600] text-white text-[8px] leading-[24.51px]">
@@ -58,14 +64,14 @@ const Footer = ({ scrollToAboutUs }: any) => {
         <div className="flex flex-row  justify-end border-white border-b-[1px] py-[18px] px-[4%]">
           <div className=" flex flex-row items-center gap-[10px]">
             <div className="flex flex-row gap-[8px] items-center">
-              <p>webgoldlimited.co@gmail.com</p>
-              <BsFillEnvelopeFill />
-            </div>
-            <div className="flex flex-row gap-[8px] items-center">
               <p>Whatsapp</p>
               <a href="https://wa.me/+358417228584">
-                <RiWhatsappFill />
+                <RiWhatsappFill className="text-3xl" />
               </a>
+            </div>
+            <div className="flex flex-row gap-[8px] items-center">
+              <p>webgoldlimited.co@gmail.com</p>
+              <BsFillEnvelopeFill />
             </div>
           </div>
         </div>
