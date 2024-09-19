@@ -155,7 +155,7 @@ const Page = () => {
 
           <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex flex-row">
             <span className="font-[500] text-[24px] leading-[36px] text-[#2E2A39]">
-              ${" "}
+              €{" "}
               <input
                 onChange={handleInputChange}
                 type="number"
@@ -167,7 +167,7 @@ const Page = () => {
               />
             </span>
             <div className="bg-white rounded-[7.41px] px-[23.17px]">
-              <p>USD</p>
+              <p>Euros</p>
             </div>
           </div>
         </div>

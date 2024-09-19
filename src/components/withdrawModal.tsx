@@ -116,7 +116,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
         <form onSubmit={handleSubmit} className="w-full">
           <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row">
             <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row">
-              <p>$</p>{" "}
+              <p>€</p>{" "}
               <input
                 value={formData.amount}
                 name="amount"
@@ -129,9 +129,8 @@ const WithdrawModal = ({ visible, onClose }: any) => {
             </span>
 
             <div className="bg-white rounded-[7.41px] px-[18.17px] md:h-[64px] flex flex-row justify-between items-center gap-[8px]">
-              <Image src={usa} alt="" />
               <p className="text-[#4743C9] font-[700] text-[18px] leading-[27px]">
-                USD
+                Euros
               </p>
             </div>
           </div>
