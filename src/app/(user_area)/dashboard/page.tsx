@@ -297,12 +297,12 @@ const Page = () => {
         </div>
       </div>
       <div className="flex md:flex-row flex-col items-center gap-[15px]">
-        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
-          <div className="w-[86.53px] h-[86.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-[56.53px] h-[56.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
             <Image src={vector} alt="" />
           </div>
           <div>
-            <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
+            <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.totalInvested)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
@@ -310,14 +310,14 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
-          <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
               €
             </div>
           </div>
           <div>
-            <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
+            <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.totalEarned)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
@@ -325,18 +325,33 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
-          <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
-            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
               €
             </div>
           </div>
           <div>
-            <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
+            <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.availableBalance)}
             </p>
             <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
               Avaliable balance
+            </p>
+          </div>
+        </div>
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
+              €
+            </div>
+          </div>
+          <div>
+            <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
+              €{formatToTwoDecimalPlaces(data?.referralBonus)}
+            </p>
+            <p className="font-[400] text-[17.23px] leading-[23.46px] text-[#33333399]">
+              Referral Bonus
             </p>
           </div>
         </div>
