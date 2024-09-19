@@ -144,7 +144,7 @@ const Page = () => {
               className="bg-[#EDEFFF]"
             >
               <option value="">Select Duration</option>
-              <option value=" silver_re_1">Silver Plan One Week</option>
+              <option value="silver_re_1">Silver Plan One Week</option>
               <option value="silver_re_2">Silver Plan Two Weeks</option>
               <option value="gold_re_1">Gold Plan One Week</option>
               <option value="gold_re_2">Gold Plan Two Weeks</option>
