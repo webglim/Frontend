@@ -222,7 +222,7 @@ const DepositModal = ({ visible, onClose }: any) => {
         </div>
         <form onSubmit={handleSubmit} className="w-full">
           <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex flex-col md:flex-row gap-2">
-            <span className="font-[500] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row w-[80%]">
+            <div className="font-[500] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row ">
               <p>€</p>{" "}
               <input
                 value={formData.amount || ""}
@@ -233,7 +233,7 @@ const DepositModal = ({ visible, onClose }: any) => {
                 placeholder={`0.00`}
                 // min={minValue}
               />
-            </span>
+            </div>
 
             <div className="bg-white rounded-[7.41px] px-[23.17px] md:h-[64px] flex flex-row justify-between items-center gap-[8px]">
               {/* <Image src={usa} alt="" /> */}

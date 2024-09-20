@@ -97,9 +97,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="bg-white md:w-1/3 w-[95%] py-[14.83px] px-[18.53px] rounded-[4px] gap-[33.36px] z-10 flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <p className="font-[600] text-[24px] leading-[36px] text-[#333333]">
-            Bitcoin
-          </p>
+          <p className="font-[600] text-[24px] leading-[36px] text-[#333333]"></p>
           <IoIosCloseCircleOutline
             className="text-[#4743C9] h-[24px] w-[24px] hover:cursor-pointer"
             onClick={onClose}
@@ -107,7 +105,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
         </div>
         <form onSubmit={handleSubmit} className="w-full">
           <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row gap-2">
-            <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row ">
+            <div className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row ">
               <p>€</p>{" "}
               <input
                 value={formData.amount || ""}
@@ -118,7 +116,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
                 placeholder={`0.00`}
                 // min={minValue}
               />
-            </span>
+            </div>
 
             <div className="bg-white rounded-[7.41px] px-[18.17px] md:h-[64px] flex flex-row justify-between items-center gap-[8px]">
               <p className="text-[#4743C9] font-[700] text-[18px] leading-[27px]">
