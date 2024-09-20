@@ -31,6 +31,7 @@ const DepositModal = ({ visible, onClose }: any) => {
   const LiteWallet = "ltc1qs6wnvcfx6ayqarar93kk3eeje4eajtcwggf8s6";
   const SolanaWallet = "AqFvArcyxJ1Peib677jdzVc6CHYURK2o4Fg27djnnQeV";
   const BNBsmartWallet = "0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2";
+  const [selectedCurrency, setSelectedCurrency] = useState("");
   const handleBTCWalletCopyClick = () => {
     navigator.clipboard
       .writeText(BTCWallet)
@@ -39,42 +40,42 @@ const DepositModal = ({ visible, onClose }: any) => {
   };
   const handleEthereumWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(EthereumWallet)
       .then(() => setIsEthereumWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const handleUSDTWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(USDTWallet)
       .then(() => setIsUSDTWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const handleBNBWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(BNBWallet)
       .then(() => setIsBNBWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const handleLiteWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(LiteWallet)
       .then(() => setIsLiteWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const handleSolanaWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(SolanaWallet)
       .then(() => setIsSolanaWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
   const handleBNBsmartWalletCopyClick = () => {
     navigator.clipboard
-      .writeText(BTCWallet)
+      .writeText(BNBsmartWallet)
       .then(() => setIsBNBsmartWalletCopied(true))
       .catch((err) => toast.error("Failed to copy to clipboard", err));
   };
-  const [formData, setFormData] = useState<FormData>({
-    amount: 0,
+  const [formData, setFormData] = useState<any>({
+    amount: undefined,
   });
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -88,7 +89,7 @@ const DepositModal = ({ visible, onClose }: any) => {
     const { name, value } = e.target;
 
     // If the field is 'amount', convert the value to a number
-    setFormData((prevFormData) => ({
+    setFormData((prevFormData: any) => ({
       ...prevFormData,
       [name]: name === "amount" ? Number(value) : value,
     }));
@@ -144,6 +145,50 @@ const DepositModal = ({ visible, onClose }: any) => {
       setIsSubmitting(false);
     }
   };
+  const walletData: any = {
+    Bitcoin: {
+      name: "Bitcoin",
+      address: "bc1qg0xghuz6t255704a82z0udyc4rhvpjp7txshml",
+      copyClick: handleBTCWalletCopyClick,
+      isCopied: isBTCWalletCopied,
+    },
+    Ethereum: {
+      name: "Ethereum",
+      address: "0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2",
+      copyClick: handleEthereumWalletCopyClick,
+      isCopied: isEthereumWalletCopied,
+    },
+    USDT: {
+      name: "USDT trc 20",
+      address: "TBhZHJuCNAum4r8WHCKq3oAMUs2xifipNJ",
+      copyClick: handleUSDTWalletCopyClick,
+      isCopied: isUSDTWalletCopied,
+    },
+    BNB: {
+      name: "BNB beacon chain",
+      address: "bnb1lcc2d98cdydjpxf9jrcwvav3qqf4fwctk9e8m3",
+      copyClick: handleBNBWalletCopyClick,
+      isCopied: isBNBWalletCopied,
+    },
+    Litecoin: {
+      name: "Litecoin",
+      address: "ltc1qs6wnvcfx6ayqarar93kk3eeje4eajtcwggf8s6",
+      copyClick: handleLiteWalletCopyClick,
+      isCopied: isLiteWalletCopied,
+    },
+    Solana: {
+      name: "Solana",
+      address: "AqFvArcyxJ1Peib677jdzVc6CHYURK2o4Fg27djnnQeV",
+      copyClick: handleSolanaWalletCopyClick,
+      isCopied: isSolanaWalletCopied,
+    },
+    BNBsmart: {
+      name: "BNB smart chain",
+      address: "0xd4278134CD4e6540F46aD4846cF8Cc16FE079aF2",
+      copyClick: handleBNBsmartWalletCopyClick,
+      isCopied: isBNBsmartWalletCopied,
+    },
+  };
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center ${
@@ -153,20 +198,34 @@ const DepositModal = ({ visible, onClose }: any) => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="bg-white md:w-1/3 w-[95%] max-h-[80%] py-[14.83px] overflow-y-scroll md:px-[18.53px] px-[10px] rounded-[4px] md:gap-[33.36px] gap-[14px] z-10 flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <p className="font-[600] text-[24px] leading-[36px] text-[#333333]">
-            Bitcoin
-          </p>
+          <select
+            value={selectedCurrency}
+            onChange={(e) => setSelectedCurrency(e.target.value)}
+            className="p-2 border rounded"
+          >
+            <option value="" disabled>
+              Select Cryptocurrency
+            </option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="USDT">USDT trc 20</option>
+            <option value="BNB">BNB beacon chain</option>
+            <option value="Litecoin">Litecoin</option>
+            <option value="Solana">Solana</option>
+            <option value="BNBsmart">BNB smart chain</option>
+          </select>
+
           <IoIosCloseCircleOutline
             className="text-[#4743C9] h-[24px] w-[24px] hover:cursor-pointer"
             onClick={onClose}
           />
         </div>
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex flex-col md:flex-row">
-            <span className="font-[500] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row">
+          <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex flex-col md:flex-row gap-2">
+            <span className="font-[500] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row w-[80%]">
               <p>€</p>{" "}
               <input
-                value={formData.amount}
+                value={formData.amount || ""}
                 name="amount"
                 onChange={handleChange}
                 type="number"
@@ -190,7 +249,7 @@ const DepositModal = ({ visible, onClose }: any) => {
             <ul className="font-[500] list-disc text-[14.83px] leading-[22.24px] text-[#2E2A39] w-full pl-[16px]">
               <li>Instruction: Send money to wallet address</li>
             </ul>
-            <div className="flex md:flex-row flex-col justify-between  text-left">
+            {/* <div className="flex md:flex-row flex-col justify-between  text-left">
               <div>
                 <p className="font-[800] text-[14px] leading-[22.24px] text-[#2E2A39] text-left">
                   Bitcoin
@@ -329,7 +388,28 @@ const DepositModal = ({ visible, onClose }: any) => {
                   {isBNBsmartWalletCopied ? "Copied!" : "Copy"}
                 </button>
               </div>
-            </div>
+            </div> */}
+            {selectedCurrency && (
+              <div className="flex flex-col justify-between mt-4">
+                <div>
+                  <p className="font-[800] text-[14px] text-[#2E2A39]">
+                    {walletData[selectedCurrency].name}
+                  </p>
+                  <p className="font-[800] text-[14px] text-[#2E2A39] break-words overflow-hidden">
+                    {walletData[selectedCurrency].address}
+                  </p>
+                </div>
+                <div className="flex items-center justify-center mt-2">
+                  <button
+                    type="button"
+                    onClick={walletData[selectedCurrency].copyClick}
+                    className="py-1 px-2 rounded-md font-bold bg-[#4743C9] text-white text-[12px]"
+                  >
+                    {walletData[selectedCurrency].isCopied ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           <button
             type="submit"

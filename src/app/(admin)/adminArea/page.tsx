@@ -17,6 +17,7 @@ import { FormatDate } from "@/helpers/helpers";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { FaPerson } from "react-icons/fa6";
 
 interface DocumentLoadingState {
   [key: string]: boolean;
@@ -255,11 +256,11 @@ const Page = () => {
         ) : withdrawal && withdrawal.length > 0 ? (
           <>
             <div className="p-[18px] flex flex-row md:gap-[29.45px] gap-[10px] items-center">
-              <div className="w-1/3">
+              <div className="w-1/4">
                 <p>name</p>
               </div>
 
-              <div className="w-1/3">
+              <div className="w-1/4">
                 <p>Amount</p>
               </div>
             </div>
@@ -270,30 +271,27 @@ const Page = () => {
                     index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
                   }`}
                 >
-                  <div className="w-1/3 flex flex-row items-center gap-[4px]">
+                  <div className="w-1/4 flex flex-row items-center gap-[4px]">
                     <p>{withdrawals?.user?.firstName}</p>
                   </div>
 
-                  <div className="w-1/3">
+                  <div className="w-1/4">
                     <p>€{withdrawals?.amount}</p>
                   </div>
-                  <div className="flex flex-row items-center gap-2">
-                    {withdrawals?.confirmed === false && (
-                      <button
-                        className="px-3 py-1 bg-green-300 rounded-sm"
-                        onClick={() => handleApprove(withdrawals.id, true)}
-                      >
-                        {isapprove[withdrawals?.id] ? "Loading..." : " Approve"}
-                      </button>
-                    )}
-                    {withdrawals?.confirmed === true && (
-                      <button
-                        className="px-3 py-1 bg-red-400 rounded-sm"
-                        onClick={() => handleApprove(withdrawals.id, false)}
-                      >
-                        {isapprove[withdrawals?.id] ? "Loading..." : " Decline"}
-                      </button>
-                    )}
+                  <div className="flex flex-row items-center gap-2 w-2/4">
+                    <button
+                      className="px-3 py-1 bg-green-300 rounded-sm"
+                      onClick={() => handleApprove(withdrawals.id, true)}
+                    >
+                      {isapprove[withdrawals?.id] ? "Loading..." : " Approve"}
+                    </button>
+
+                    <button
+                      className="px-3 py-1 bg-red-400 rounded-sm"
+                      onClick={() => handleApprove(withdrawals.id, false)}
+                    >
+                      {isapprove[withdrawals?.id] ? "Loading..." : " Decline"}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -455,10 +453,12 @@ const Page = () => {
   return (
     <div className="px-[2%] flex flex-col gap-[36px] min-h-[80vh] bg-[#F9F9F9]">
       <div className="flex md:flex-row flex-col items-center gap-[15px] mt-4">
-        <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
-          {/* <div className="w-[86.53px] h-[86.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
-            <Image src={vector} alt="" />
-          </div> */}
+        <div className=" md:w-1/3 w-full  rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+          <div className="w-[86.53px] bg-[#FEEFD1] h-[86.53px]  rounded-full flex items-center justify-center">
+            <div className="flex items-center bg-[#FEEFD1] justify-center rounded-full  w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
+              <FaPerson />
+            </div>
+          </div>
           <div>
             <p className="text-[#333333] font-[800] text-[30.14px] leading-[41.05px]">
               {investment?.totalActiveInvestors}
@@ -468,7 +468,7 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+        <div className=" h-full md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
             <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
               €
@@ -483,7 +483,7 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
+        <div className=" h-full md:w-1/3 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center">
           <div className="w-[86.53px] h-[86.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
             <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[86.53px] h-[86.53px] text-[34.27px] text-[#FFAA00]">
               €

@@ -14,19 +14,11 @@ type FormErrors = {
   amount?: string;
 };
 const WithdrawModal = ({ visible, onClose }: any) => {
-  const router = useRouter();
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isBTCWalletCopied, setIsBTCWalletCopied] = useState(false);
-  const BTCWallet = "bc1qd06d9s21q60zjn0vfxcuxprdaamupz7m6e79";
-  const handleBTCWalletCopyClick = () => {
-    navigator.clipboard
-      .writeText(BTCWallet)
-      .then(() => setIsBTCWalletCopied(true))
-      .catch((err) => toast.error("Failed to copy to clipboard", err));
-  };
-  const [formData, setFormData] = useState<FormData>({
-    amount: 0,
+
+  const [formData, setFormData] = useState<any>({
+    amount: undefined,
   });
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -40,7 +32,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
     const { name, value } = e.target;
 
     // If the field is 'amount', convert the value to a number
-    setFormData((prevFormData) => ({
+    setFormData((prevFormData: any) => ({
       ...prevFormData,
       [name]: name === "amount" ? Number(value) : value,
     }));
@@ -114,11 +106,11 @@ const WithdrawModal = ({ visible, onClose }: any) => {
           />
         </div>
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row">
-            <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row">
+          <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row gap-2">
+            <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row w-[80%]">
               <p>€</p>{" "}
               <input
-                value={formData.amount}
+                value={formData.amount || ""}
                 name="amount"
                 onChange={handleChange}
                 type="number"

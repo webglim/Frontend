@@ -151,9 +151,6 @@ const Page = () => {
                   <p className="font-[800] text-[25.75px] leading-[35.07px] text-[#333333]">
                     {item.title}
                   </p>
-                  <p className="font-[600] text-[14.72px] leading-[20.04px] text-[#33333399]">
-                    ROI +33%
-                  </p>
                 </div>
               </div>
             ))}
@@ -167,7 +164,7 @@ const Page = () => {
               </p>
             </div>
 
-            <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px]  flex flex-col gap-[7.41px]">
+            <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px]  flex flex-col gap-[7.41px] text-black">
               <p className="font-[500] text-[24px] leading-[36px] text-[#2E2A39]">
                 Plan
               </p>
@@ -186,7 +183,7 @@ const Page = () => {
 
             <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex flex-row">
               <span className="font-[500] text-[24px] leading-[36px] text-[#2E2A39]">
-                ${" "}
+                €{" "}
                 <input
                   onChange={handleInputChange}
                   type="number"
@@ -197,8 +194,8 @@ const Page = () => {
                   name="amount"
                 />
               </span>
-              <div className="bg-white rounded-[7.41px] px-[23.17px]">
-                <p>USD</p>
+              <div className="bg-white rounded-[7.41px] px-[23.17px] text-black">
+                <p>Euros</p>
               </div>
             </div>
           </div>

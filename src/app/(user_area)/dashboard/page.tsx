@@ -26,6 +26,7 @@ const Page = () => {
   const [data, setData] = useState<any>();
   const [transactions, setTransactions] = useState<any>(null);
   const [deposit, setDeposit] = useState<any>(null);
+  const [withdrawals, setWithdrawals] = useState<any>(null);
   const [transactionsLoading, setTransactionsLoading] =
     useState<boolean>(false);
   const [investment, setInvestment] = useState<any>();
@@ -78,24 +79,35 @@ const Page = () => {
         if (userId) {
           setTransactionsLoading(true);
 
-          const [transactionsResponse, userDepositResponse] = await Promise.all(
-            [
-              axios.get(
-                `https://web-gold-limited-backend.onrender.com/api/v1/investment?pagination_size=5&user=${userId}`,
-                config
-              ),
-              axios.get(
-                `https://web-gold-limited-backend.onrender.com/api/v1/deposit?user=${userId}`,
-                config
-              ),
-            ]
-          );
+          const [
+            transactionsResponse,
+            userDepositResponse,
+            userWithdrawalResponse,
+          ] = await Promise.all([
+            axios.get(
+              `https://web-gold-limited-backend.onrender.com/api/v1/investment?pagination_size=5&user=${userId}`,
+              config
+            ),
+            axios.get(
+              `https://web-gold-limited-backend.onrender.com/api/v1/deposit?user=${userId}`,
+              config
+            ),
+            axios.get(
+              `https://web-gold-limited-backend.onrender.com/api/v1/withdrawal?user=${userId}`,
+              config
+            ),
+          ]);
 
           setTransactionsLoading(false);
           console.log("Transactions response.data", transactionsResponse.data);
           console.log("userDeposit response.data", userDepositResponse.data);
+          console.log(
+            "userWithdrawalResponse response.data",
+            userWithdrawalResponse.data
+          );
 
           setTransactions(transactionsResponse.data.data);
+          setWithdrawals(userWithdrawalResponse.data.data);
           setDeposit(userDepositResponse.data.data);
         }
 
@@ -132,7 +144,7 @@ const Page = () => {
           <Loader />
         ) : transactions && transactions.length > 0 ? (
           <>
-            <div className="p-[18px] flex flex-row gap-[29.45px] items-center">
+            <div className="p-[18px] flex flex-row gap-[29.45px] items-center font-[800]">
               <div className="w-1/4">
                 <p>Transaction ID</p>
               </div>
@@ -243,6 +255,62 @@ const Page = () => {
       </div>
     );
   };
+  const Withdrawals = () => {
+    return (
+      <div>
+        {transactionsLoading ? (
+          <Loader />
+        ) : withdrawals && withdrawals.length > 0 ? (
+          <>
+            <div className="p-[18px] flex flex-row gap-[29.45px] items-center font-[800]">
+              <div className="w-1/3">
+                <p>Amount Withdrawn</p>
+              </div>
+              <div className="w-1/3">
+                <p>Date</p>
+              </div>
+              <div className="w-1/3">
+                <p>Status</p>
+              </div>
+            </div>
+            {withdrawals.map((withdrawal: any, index: any) => (
+              <div key={index}>
+                <div
+                  className={`flex flex-row items-center  p-[18px]  gap-[29.45px] ${
+                    index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
+                  }`}
+                >
+                  <div className="w-1/3">
+                    <p>€{withdrawal?.amount}</p>
+                  </div>
+                  <div className="w-1/3">
+                    <p>{FormatDate(withdrawal?.createdAt)}</p>
+                  </div>
+                  <div className="w-1/3">
+                    <p className="text-[#F6A41B]">
+                      {withdrawal.confirmed === false ? "Pending" : "Confirmed"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className=" w-full flex flex-col items-center justify-center gap-[8px] pb-10">
+            <Image src={notransact} alt="" className="mt-12" />
+            <div className="flex flex-col gap-[8px] mt-8 items-center justify-center">
+              <p className="font-[600] text-[25.65px] leading-[14.63px] text-[#333333]">
+                No Recent Withdrawals
+              </p>
+              <p className="font-[500] text-[25.65px] leading-[24.63px] text-[#333333] mt-4 text-center">
+                We couldn't find any Withdrawals to this account
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   const items: TabsProps["items"] = [
     {
@@ -255,6 +323,11 @@ const Page = () => {
       label: "Deposits",
       children: <Deposit />,
     },
+    {
+      key: "3",
+      label: "Withdrawals",
+      children: <Withdrawals />,
+    },
   ];
   return (
     <div className="px-[2%] flex flex-col gap-[36px] min-h-[80vh] overflow-y-scroll">
@@ -264,9 +337,8 @@ const Page = () => {
             <p className="font-[400] text-[14.23px] leading-[19.38px] text-[#FFFFFF]">
               Wallet Balance
             </p>
-            {/* <FiEye color="white" /> */}
           </div>
-          <div className="flex flex-row gap-[9.49px] items-center">
+          <div className="flex flex-row gap-[9.49px] items-center flex-wrap">
             <p className="font-[600] text-[56.93px] leading-[77.52px] text-[#FFFFFF]">
               €{formatToTwoDecimalPlaces(data?.wallet)}
             </p>
@@ -297,11 +369,13 @@ const Page = () => {
         </div>
       </div>
       <div className="flex md:flex-row flex-col items-center gap-[15px]">
-        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
-          <div className="w-[56.53px] h-[56.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
-            <Image src={vector} alt="" />
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] py-[22.74px] px-[10px] gap-[12.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-1/3  flex items-center justify-center">
+            <div className="w-[56.53px] h-[56.53px] bg-[#EDEFFF] rounded-full flex items-center justify-center">
+              <Image src={vector} alt="" />
+            </div>
           </div>
-          <div>
+          <div className="w-2/3">
             <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.totalInvested)}
             </p>
@@ -310,13 +384,13 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
-          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] py-[22.74px] px-[10px] gap-[12.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-1/3  flex items-center justify-center">
             <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
               €
             </div>
           </div>
-          <div>
+          <div className="w-2/3">
             <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.totalEarned)}
             </p>
@@ -325,13 +399,13 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
-          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] py-[22.74px] px-[10px] gap-[12.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-1/3 flex items-center justify-center">
             <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
               €
             </div>
           </div>
-          <div>
+          <div className="w-2/3">
             <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(investment?.availableBalance)}
             </p>
@@ -340,13 +414,13 @@ const Page = () => {
             </p>
           </div>
         </div>
-        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] p-[22.74px] gap-[22.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
-          <div className="w-[56.53px] h-[56.53px] bg-[#FEEFD1] rounded-full flex items-center justify-center">
+        <div className="md:w-1/4 w-full rounded-[18.19px] border-[2.27px] py-[22.74px] px-[10px] gap-[12.74px] bg-[#FFFFFF] border-[#78B3FF80] flex flex-row items-center justify-center">
+          <div className="w-1/3 flex items-center justify-center">
             <div className="flex items-center justify-center rounded-full bg-[#FEEFD1] w-[56.53px] h-[56.53px] text-[34.27px] text-[#FFAA00]">
               €
             </div>
           </div>
-          <div>
+          <div className="w-2/3">
             <p className="text-[#333333] font-[800] text-[20.14px] leading-[41.05px]">
               €{formatToTwoDecimalPlaces(data?.referralBonus)}
             </p>
