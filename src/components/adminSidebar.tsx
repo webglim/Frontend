@@ -71,12 +71,33 @@ function AdminSidebar({ isOpen, openSidebar, closeSidebar }: any) {
               <Link
                 // onClick={closeSidebar}
                 href="/adminArea"
-                className={`flex flex-row bg-[#FFAA00] text-[A4A4A4] text-white items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] 
-               `}
+                className={`flex flex-row  text-[A4A4A4] text-white items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] 
+                  ${
+                    pathname === "/adminArea"
+                      ? "bg-[#FFAA00] text-white"
+                      : "bg-transparent text-[#A4A4A4]"
+                  }`}
               >
                 <RiDashboardLine className="w-[24px] h-[24px]" />
                 <p className="font-[400] text-[16px] leading-[21.79px]   ">
                   Dashboard
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                // onClick={closeSidebar}
+                href="/adminchangepassword"
+                className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
+                  pathname === "/adminchangepassword"
+                    ? "bg-[#FFAA00] text-white"
+                    : "bg-transparent text-[#A4A4A4]"
+                }`}
+              >
+                <RiUserSettingsLine className="w-[24px] h-[24px]" />
+
+                <p className="font-[400] text-[16px] leading-[21.79px] ">
+                  Change Password
                 </p>
               </Link>
             </li>
