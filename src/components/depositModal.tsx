@@ -201,7 +201,7 @@ const DepositModal = ({ visible, onClose }: any) => {
           <select
             value={selectedCurrency}
             onChange={(e) => setSelectedCurrency(e.target.value)}
-            className="p-2 border rounded"
+            className="p-2 border rounded text-black"
           >
             <option value="" disabled>
               Select Cryptocurrency
