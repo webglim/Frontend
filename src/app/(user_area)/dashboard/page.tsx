@@ -288,7 +288,11 @@ const Page = () => {
                   </div>
                   <div className="w-1/3">
                     <p className="text-[#F6A41B]">
-                      {withdrawal.confirmed === false ? "Pending" : "Confirmed"}
+                      {withdrawal.confirmed
+                        ? "Confirmed"
+                        : withdrawal.declined
+                        ? "Declined"
+                        : "Pending"}
                     </p>
                   </div>
                 </div>

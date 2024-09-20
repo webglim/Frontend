@@ -9,16 +9,14 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const Login = () => {
+const Page = () => {
   const router = useRouter();
   type FormData = {
     email: string;
-    password: string;
   };
 
   const [formData, setFormData] = useState<FormData>({
     email: "",
-    password: "",
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -34,9 +32,6 @@ const Login = () => {
 
     if (!formData.email) {
       newErrors.email = "Email is required";
-    }
-    if (formData.password.length < 5) {
-      newErrors.password = "Password must be at least 5 characters";
     }
     return newErrors;
   };
@@ -58,15 +53,14 @@ const Login = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        "https://web-gold-limited-backend.onrender.com/api/v1/auth/login",
+        `https://web-gold-limited-backend.onrender.com/api/v1/auth/forgot-password/${formData.email}`,
         formData
       );
 
       if (response.status === 201) {
-        localStorage.setItem("token", response.data.data.token);
         console.log("response.data.token", response);
         toast.success(response.data.message);
-        router.push("/dashboard");
+        router.push("/login");
 
         // Handle successful signup (e.g., redirect to login or verification page)
       }
@@ -113,7 +107,7 @@ const Login = () => {
         <div className="bg-white rounded-[10px] shadow-md md:w-[80%] w-[90%] md:h-[80vh] items-center justify-center p-6">
           <div className="flex flex-col gap-[32px] items-center">
             <p className="text-[#2B2A2A] text-[28px] font-[700] leading-[34.13px]">
-              Welcome Back
+              Recover Password
             </p>
             <div className="flex flex-row items-center bg-[#FFDA694D] rounded-tr-[5px] rounded-br-[5px]">
               <div className="rounded-[5px] py-[10px] px-[40px] bg-gradient-to-b from-[#F3C53D] via-[#F8AA02] to-[#B88D0F]">
@@ -147,46 +141,14 @@ const Login = () => {
                       <p className="text-red-600 text-[8px]">{errors.email}</p>
                     )}
                   </div>
-                  <div>
-                    <div className="flex flex-row items-center p-[10px] rounded-[5px] border-[#BBBBBC] border-[1px] bg-[#E8F0FE]">
-                      <input
-                        name="password"
-                        type={isPasswordVisible ? "password" : "text"}
-                        className=" w-full bg-[#E8F0FE]"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                      />
-                      <span
-                        className={`text-[#C0C0C0] text-2xl px-2`}
-                        onClick={togglePassword}
-                      >
-                        {isPasswordVisible ? (
-                          <AiOutlineEyeInvisible />
-                        ) : (
-                          <AiOutlineEye />
-                        )}
-                      </span>
-                    </div>
-                    {errors.password && (
-                      <p className="text-red-600 text-[8px]">
-                        {errors.password}
-                      </p>
-                    )}
-                  </div>
-                  <Link href={"/forgotpassword"}>
-                    <p className="text-[#1B1C1F] text-[14px] font-[600] leading-[17.07px]">
-                      Forgot password?
-                    </p>
-                  </Link>
                 </div>
               </div>
-              <div className="flex flex-col gap-[38px] mt-2">
+              <div className="flex flex-col gap-[38px] mt-16">
                 <button
                   type="submit"
                   className="bg-[#FFAA00] py-[10px] rounded-[5px] text-[#F4F4F4] font-[600] text-[18px] leading-[21.94px]"
                 >
-                  {isSubmitting ? "Loading..." : "Login"}
+                  {isSubmitting ? "Loading..." : "Continue"}
                 </button>
               </div>
             </form>
@@ -212,4 +174,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Page;

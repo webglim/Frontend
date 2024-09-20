@@ -28,6 +28,7 @@ const page = ({ params }: { params: { userId: string } }) => {
     nextOfKinEmail: "",
     nextOfKinPhone: "",
     walletAddress: "",
+    walletType: "",
   });
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const page = ({ params }: { params: { userId: string } }) => {
         nextOfKinEmail: data?.nextOfKinEmail,
         nextOfKinPhone: data?.nextOfKinPhone,
         walletAddress: data?.wallet,
+        walletType: data?.walletType,
       });
     }
   }, [data]);
@@ -204,20 +206,30 @@ const page = ({ params }: { params: { userId: string } }) => {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-[9.28px] w-full">
-                <p className="font-[600] text-[16px] leading-[24px]">Wallet</p>
-                <div className="rounded-[8px] p-[7.73px] bg-[#EDEFFF] flex flex-row">
-                  {/* <Select
-                  options={options}
-                  //   value={formData.country}
-                  //   onChange={changeHandler}
-                  className=" rounded-[5px]  w-[30%] bg-[#EDEFFF]"
-                /> */}
+              <div className="p-[7.73px] gap-[13.91px] flex flex-row w-full">
+                <div className="flex flex-col gap-[9.28px] w-1/2">
+                  <p className="font-[600] text-[16px] leading-[24px]">
+                    Wallet type
+                  </p>
+
                   <input
                     onChange={handleInputChange}
                     type="text"
-                    className="w-full bg-[#EDEFFF]"
-                    defaultValue={data?.wallet}
+                    className="rounded-[8px] p-[7.73px] bg-[#EDEFFF]"
+                    defaultValue={data?.walletType}
+                    name="walletAddress"
+                  />
+                </div>
+                <div className="flex flex-col gap-[9.28px] w-1/2">
+                  <p className="font-[600] text-[16px] leading-[24px]">
+                    Wallet
+                  </p>
+
+                  <input
+                    onChange={handleInputChange}
+                    type="text"
+                    className="rounded-[8px] p-[7.73px] bg-[#EDEFFF]"
+                    defaultValue={data?.walletAddress}
                     name="walletAddress"
                   />
                 </div>

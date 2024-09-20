@@ -134,6 +134,23 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
                 </p>
               </Link>
             </li>
+            <li>
+              <Link
+                // onClick={closeSidebar}
+                href="/changepassword"
+                className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
+                  pathname === "/changepassword"
+                    ? "bg-[#FFAA00] text-white"
+                    : "bg-transparent text-[#A4A4A4]"
+                }`}
+              >
+                <RiUserSettingsLine className="w-[24px] h-[24px]" />
+
+                <p className="font-[400] text-[16px] leading-[21.79px] ">
+                  Change Password
+                </p>
+              </Link>
+            </li>
             <div
               className="flex flex-row items-center gap-[16px] px-[20px] py-[10px] rounded-[8px] bg-red-400 w-1/2"
               onClick={() => {

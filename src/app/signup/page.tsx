@@ -315,10 +315,11 @@ const Login = () => {
                       onChange={handleChange}
                     />
                   </div>
-
-                  <p className="text-[#1B1C1F] text-[14px] font-[600] leading-[17.07px]">
-                    Forgot password?
-                  </p>
+                  <Link href={"/forgotpassword"}>
+                    <p className="text-[#1B1C1F] text-[14px] font-[600] leading-[17.07px]">
+                      Forgot password?
+                    </p>
+                  </Link>
                 </div>
               </div>
               <div className="flex flex-col gap-[38px]">
@@ -330,9 +331,11 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <p className="text-center font-[600] text-[12px] leading-[14.63px]">
-              Dont have an account? Sign up .
-            </p>
+            <Link href={"/signup"}>
+              <p className="text-center font-[600] text-[12px] leading-[14.63px]">
+                Dont have an account? Sign up .
+              </p>
+            </Link>
           </div>
         </div>
         <div className="flex flex-row justify-between w-full px-[4%] mt-8 items-baseline">

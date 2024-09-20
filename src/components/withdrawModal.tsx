@@ -107,7 +107,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
         </div>
         <form onSubmit={handleSubmit} className="w-full">
           <div className="bg-[#EDEFFF] py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row gap-2">
-            <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row w-[80%]">
+            <span className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row ">
               <p>€</p>{" "}
               <input
                 value={formData.amount || ""}

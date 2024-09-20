@@ -65,9 +65,9 @@ const Footer = ({ shouldFooter, onScrollComplete, footerRef }: any) => {
           <div className=" flex flex-row items-center gap-[10px]">
             <div className="flex flex-row gap-[8px] items-center">
               <p>Whatsapp</p>
-              <a href="https://wa.me/+358417228584">
-                <RiWhatsappFill className="text-3xl" />
-              </a>
+              {/* <a href="https://wa.me/+358417228584"> */}
+              <RiWhatsappFill className="text-3xl" />
+              {/* </a> */}
             </div>
             <div className="flex flex-row gap-[8px] items-center">
               <p>webgoldlimited.co@gmail.com</p>

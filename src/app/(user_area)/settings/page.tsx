@@ -27,6 +27,7 @@ const page = () => {
     nextOfKinEmail: "",
     nextOfKinPhone: "",
     walletAddress: "",
+    walletType: "",
   });
 
   useEffect(() => {
@@ -40,11 +41,14 @@ const page = () => {
         nextOfKinEmail: data?.nextOfKinEmail,
         nextOfKinPhone: data?.nextOfKinPhone,
         walletAddress: data?.walletAddress,
+        walletType: data?.walletType,
       });
     }
   }, [data]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -173,22 +177,10 @@ const page = () => {
                   />
                 </div>
               </div>
-              {/* <div className="flex flex-col gap-[9.28px] w-full">
-              <p className="font-[600] text-[16px] leading-[24px]">Email</p>
-              <input
-                type="text"
-                className="rounded-[8px] p-[7.73px] bg-[#EDEFFF]"
-              />
-            </div> */}
+
               <div className="flex flex-col gap-[9.28px] w-full">
                 <p className="font-[600] text-[16px] leading-[24px]">Phone</p>
                 <div className="rounded-[8px] p-[7.73px] bg-[#EDEFFF] flex flex-row">
-                  {/* <Select
-                  options={options}
-                  //   value={formData.country}
-                  //   onChange={changeHandler}
-                  className=" rounded-[5px]  w-[30%] bg-[#EDEFFF]"
-                /> */}
                   <input
                     onChange={handleInputChange}
                     type="text"
@@ -198,30 +190,45 @@ const page = () => {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-[9.28px] w-full">
-                <p className="font-[600] text-[16px] leading-[24px]">
-                  Wallet Address
-                </p>
-                <div className="rounded-[8px] p-[7.73px] bg-[#EDEFFF] flex flex-row">
-                  {/* <Select
-                  options={options}
-                  //   value={formData.country}
-                  //   onChange={changeHandler}
-                  className=" rounded-[5px]  w-[30%] bg-[#EDEFFF]"
-                /> */}
+              <div className="py-[7.73px] gap-[13.91px] flex flex-row w-full">
+                <div className="flex flex-col gap-[9.28px] w-1/2">
+                  <p className="font-[600] text-[16px] leading-[24px]">
+                    Wallet Type
+                  </p>
+
+                  <select
+                    onChange={handleInputChange}
+                    defaultValue={data?.walletType}
+                    name="walletType"
+                    className="p-2 border rounded"
+                  >
+                    <option value="">Select Wallet type</option>
+                    <option value="Bitcoin">Bitcoin</option>
+                    <option value="Ethereum">Ethereum</option>
+                    <option value="USDT">USDT trc 20</option>
+                    <option value="BNB">BNB beacon chain</option>
+                    <option value="Litecoin">Litecoin</option>
+                    <option value="Solana">Solana</option>
+                    <option value="BNBsmart">BNB smart chain</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-[9.28px] w-1/2">
+                  <p className="font-[600] text-[16px] leading-[24px]">
+                    Wallet Address
+                  </p>
+
                   <input
                     onChange={handleInputChange}
                     type="text"
-                    className="w-full bg-[#EDEFFF]"
+                    className="rounded-[8px] p-[7.73px] bg-[#EDEFFF]"
                     defaultValue={data?.walletAddress}
                     name="walletAddress"
                   />
                 </div>
               </div>
             </div>
-            {/* <div className="w-[25%]"></div> */}
           </div>
-          <div className="flex flex-col px-[8px] gap-[21px] w-full">
+          <div className="flex flex-col px-[8px] gap-[21px] w-full mt-8">
             <p className="font-[600] text-[18px] leading-[27px] text-[#333333]">
               Next of Kin
             </p>

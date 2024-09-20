@@ -1,10 +1,6 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import vector from "../../../../public/images/Vector-12.svg";
-import dollar from "../../../../public/images/Vector-13.svg";
-import { Progress } from "antd";
-import { MdOutlineChevronRight } from "react-icons/md";
 import axios from "axios";
 import { formatToTwoDecimalPlaces } from "@/helpers/helpers";
 import Loader from "@/components/Loader";
@@ -12,18 +8,23 @@ import notransact from "../../../../public/images/notransact.png";
 import DepositModal from "@/components/depositModal";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
-import { div } from "framer-motion/client";
-import { FormatDate } from "@/helpers/helpers";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import { FaPerson } from "react-icons/fa6";
+import ApproveModal from "@/components/approveModal";
+import DeclineModal from "@/components/declineModal";
 
 interface DocumentLoadingState {
   [key: string]: boolean;
 }
 const Page = () => {
   const router = useRouter();
+  const [selectedWithdrawalId, setSelectedWithdrawalId] = useState(null);
+  const [selectedWithdrawalId2, setSelectedWithdrawalId2] = useState(null);
+  const [approveModalVisible, setApproveModalVisible] = useState<any>(false);
+  const [declineModalVisible, setDeclineModalVisible] = useState<any>(false);
+  const [approvalSuccess, setApprovalSuccess] = useState(false);
   const [depositModalVisible, setDepositModalVisible] = useState<any>(false);
   const [data, setData] = useState<any>();
   const [transactions, setTransactions] = useState<any>(null);
@@ -38,6 +39,16 @@ const Page = () => {
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState<DocumentLoadingState>({});
   const [isapprove, setApprove] = useState<DocumentLoadingState>({});
+  const closeApproveModal = () => {
+    setApproveModalVisible(false);
+  };
+  const closeDeclineModal = () => {
+    setDeclineModalVisible(false);
+  };
+  const openApproveModal = () => {
+    setApproveModalVisible(true);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -126,7 +137,7 @@ const Page = () => {
     };
 
     fetchData();
-  }, []);
+  }, [approvalSuccess]);
 
   const closeDepositModal = () => {
     setDepositModalVisible(false);
@@ -192,7 +203,10 @@ const Page = () => {
       }));
     }
   };
-  const handleApprove = async (id: any, confirmed: any) => {
+  const handleApprove = async (
+    id: any,
+    status: { confirmed?: boolean; declined?: boolean }
+  ) => {
     setApprove((prevLoading: any) => ({
       ...prevLoading,
       [id]: true,
@@ -202,7 +216,8 @@ const Page = () => {
     if (!token) {
       throw new Error("No token found");
     }
-
+    setApproveModalVisible(false);
+    setDeclineModalVisible(false);
     // Set up the headers including the token
     const config = {
       headers: {
@@ -213,12 +228,13 @@ const Page = () => {
       const response = await axios.post(
         `https://web-gold-limited-backend.onrender.com/api/v1/withdrawal/${id}`,
         {
-          confirmed,
+          ...status, // Sends either { confirmed: true } or { declined: true }
         },
         config
       );
 
       if (response.status === 201) {
+        setApprovalSuccess((prev) => !prev);
         console.log("response.data.token", response);
         toast.success(response.data.message);
         // Handle successful signup (e.g., redirect to login or verification page)
@@ -279,19 +295,41 @@ const Page = () => {
                     <p>€{withdrawals?.amount}</p>
                   </div>
                   <div className="flex flex-row items-center gap-2 w-2/4">
-                    <button
-                      className="px-3 py-1 bg-green-300 rounded-sm"
-                      onClick={() => handleApprove(withdrawals.id, true)}
-                    >
-                      {isapprove[withdrawals?.id] ? "Loading..." : " Approve"}
-                    </button>
+                    {!(withdrawals?.declined || withdrawals?.confirmed) ? (
+                      <>
+                        <button
+                          className="px-3 py-1 bg-green-300 rounded-sm"
+                          // onClick={() =>
+                          //   handleApprove(withdrawals.id, { confirmed: true })
+                          // }
+                          // onClick={openApproveModal}
+                          onClick={() => {
+                            setSelectedWithdrawalId(withdrawals.id); // Set the selected withdrawal ID
+                            setApproveModalVisible(true); // Open the modal
+                          }}
+                        >
+                          {isapprove[withdrawals?.id]
+                            ? "Loading..."
+                            : "Approve"}
+                        </button>
 
-                    <button
-                      className="px-3 py-1 bg-red-400 rounded-sm"
-                      onClick={() => handleApprove(withdrawals.id, false)}
-                    >
-                      {isapprove[withdrawals?.id] ? "Loading..." : " Decline"}
-                    </button>
+                        <button
+                          className="px-3 py-1 bg-red-400 rounded-sm"
+                          onClick={() => {
+                            setSelectedWithdrawalId2(withdrawals.id); // Set the selected withdrawal ID
+                            setDeclineModalVisible(true); // Open the modal
+                          }}
+                        >
+                          {isapprove[withdrawals?.id]
+                            ? "Loading..."
+                            : "Decline"}
+                        </button>
+                      </>
+                    ) : withdrawals?.confirmed ? (
+                      <p className="text-green-600 font-bold">Confirmed</p>
+                    ) : withdrawals?.declined ? (
+                      <p className="text-red-600 font-bold">Declined</p>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -514,6 +552,20 @@ const Page = () => {
           />
         </div>
       </div>
+      <ApproveModal
+        onClose={closeApproveModal}
+        visible={approveModalVisible}
+        onApprove={() =>
+          handleApprove(selectedWithdrawalId, { confirmed: true })
+        }
+      />
+      <DeclineModal
+        onClose={closeDeclineModal}
+        visible={declineModalVisible}
+        onDecline={() =>
+          handleApprove(selectedWithdrawalId2, { declined: true })
+        }
+      />
       <DepositModal onClose={closeDepositModal} visible={depositModalVisible} />
     </div>
   );
