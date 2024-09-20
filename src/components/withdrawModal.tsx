@@ -12,19 +12,29 @@ type FormData = {
 };
 type FormErrors = {
   amount?: string;
+  walletType?: string;
+  walletAddress: string;
 };
 const WithdrawModal = ({ visible, onClose }: any) => {
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<any>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState<any>({
     amount: undefined,
+    walletType: "",
+    walletAddress: "",
   });
   const validateForm = () => {
-    const newErrors: FormErrors = {};
+    const newErrors: any = {};
 
     if (!formData.amount) {
       newErrors.amount = "Amount is required";
+    }
+    if (!formData.walletType) {
+      newErrors.walletType = "Wallet Type is required";
+    }
+    if (!formData.walletAddress) {
+      newErrors.walletAddress = "Wallet Address is required";
     }
     return newErrors;
   };
@@ -51,6 +61,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
         Authorization: `Bearer ${token}`, // Replace with your authorization scheme
       },
     };
+    console.log("formData", formData);
     setIsSubmitting(true);
     try {
       const response = await axios.post(
@@ -97,7 +108,26 @@ const WithdrawModal = ({ visible, onClose }: any) => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="bg-white md:w-1/3 w-[95%] py-[14.83px] px-[18.53px] rounded-[4px] gap-[33.36px] z-10 flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <p className="font-[600] text-[24px] leading-[36px] text-[#333333]"></p>
+          <div>
+            <select
+              name="walletType"
+              onChange={handleChange}
+              value={formData.walletType}
+              className="p-2 border rounded text-black"
+            >
+              <option>Select Cryptocurrency</option>
+              <option value="Bitcoin">Bitcoin</option>
+              <option value="Ethereum">Ethereum</option>
+              <option value="USDT">USDT trc 20</option>
+              <option value="BNB">BNB beacon chain</option>
+              <option value="Litecoin">Litecoin</option>
+              <option value="Solana">Solana</option>
+              <option value="BNBsmart">BNB smart chain</option>
+            </select>
+            {errors.walletType && (
+              <p className="text-red-600 text-[12px]">{errors.walletType}</p>
+            )}
+          </div>
           <IoIosCloseCircleOutline
             className="text-[#4743C9] h-[24px] w-[24px] hover:cursor-pointer"
             onClick={onClose}
@@ -108,7 +138,7 @@ const WithdrawModal = ({ visible, onClose }: any) => {
             <div className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-row w-full">
               <p>€</p>{" "}
               <input
-                value={formData.amount || ""}
+                value={formData.amount}
                 name="amount"
                 onChange={handleChange}
                 type="number"
@@ -126,6 +156,23 @@ const WithdrawModal = ({ visible, onClose }: any) => {
           </div>
           {errors.amount && (
             <p className="text-red-600 text-[12px]">{errors.amount}</p>
+          )}
+          <div className="bg-[#EDEFFF] mt-2 py-[8px] px-[16px] rounded-[8px] items-center justify-between flex-col flex md:flex-row gap-2">
+            <div className="font-[500] gap-[5px] text-[24px] leading-[36px] text-[#2E2A39] flex flex-col w-full">
+              <p className="text-[14px]">wallet address</p>{" "}
+              <input
+                value={formData.walletAddress}
+                name="walletAddress"
+                onChange={handleChange}
+                type="number"
+                className="bg-[#EDEFFF] w-full"
+                placeholder={`0.00`}
+                // min={minValue}
+              />
+            </div>
+          </div>
+          {errors.walletAddress && (
+            <p className="text-red-600 text-[12px]">{errors.walletAddress}</p>
           )}
           <div className="bg-[#EDEFFF] mt-4 p-[16px] rounded-[8px] justify-between flex flex-col gap-[18.53px]">
             <ul className="font-[500] list-disc text-[14.83px] leading-[22.24px] text-[#2E2A39] w-full pl-[16px]">
