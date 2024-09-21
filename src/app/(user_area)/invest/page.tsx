@@ -104,7 +104,7 @@ const Page = () => {
 
       if (response.status === 201) {
         console.log("response.data", response);
-        toast.success("Profile Update successfully!!!");
+        toast.success("Investment successfull!!!");
       }
     } catch (error: any) {
       if (error.response) {

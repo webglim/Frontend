@@ -282,58 +282,58 @@ const Page = () => {
             </div>
             {withdrawal.map((withdrawals: any, index: any) => (
               <div key={index}>
-                <Link href={`/adminSettings/${withdrawals?.user?.id}`}>
-                  <div
-                    className={`flex flex-row items-center  p-[18px]  md:gap-[29.45px] gap-[10px] ${
-                      index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
-                    }`}
-                  >
-                    <div className="w-1/4 flex flex-row items-center gap-[4px]">
+                <div
+                  className={`flex flex-row items-center  p-[18px]  md:gap-[29.45px] gap-[10px] ${
+                    index % 2 === 0 ? "bg-[#FEEFD1]" : "bg-white"
+                  }`}
+                >
+                  <div className="w-1/4 flex flex-row items-center gap-[4px]">
+                    <Link href={`/adminSettings/${withdrawals?.user?.id}`}>
                       <p>{withdrawals?.user?.firstName}</p>
-                    </div>
-
-                    <div className="w-1/4">
-                      <p>€{withdrawals?.amount}</p>
-                    </div>
-                    <div className="flex flex-row items-center gap-2 w-2/4">
-                      {!(withdrawals?.declined || withdrawals?.confirmed) ? (
-                        <>
-                          <button
-                            className="px-3 py-1 bg-green-300 rounded-sm"
-                            // onClick={() =>
-                            //   handleApprove(withdrawals.id, { confirmed: true })
-                            // }
-                            // onClick={openApproveModal}
-                            onClick={() => {
-                              setSelectedWithdrawalId(withdrawals.id); // Set the selected withdrawal ID
-                              setApproveModalVisible(true); // Open the modal
-                            }}
-                          >
-                            {isapprove[withdrawals?.id]
-                              ? "Loading..."
-                              : "Approve"}
-                          </button>
-
-                          <button
-                            className="px-3 py-1 bg-red-400 rounded-sm"
-                            onClick={() => {
-                              setSelectedWithdrawalId2(withdrawals.id); // Set the selected withdrawal ID
-                              setDeclineModalVisible(true); // Open the modal
-                            }}
-                          >
-                            {isapprove[withdrawals?.id]
-                              ? "Loading..."
-                              : "Decline"}
-                          </button>
-                        </>
-                      ) : withdrawals?.confirmed ? (
-                        <p className="text-green-600 font-bold">Confirmed</p>
-                      ) : withdrawals?.declined ? (
-                        <p className="text-red-600 font-bold">Declined</p>
-                      ) : null}
-                    </div>
+                    </Link>
                   </div>
-                </Link>
+
+                  <div className="w-1/4">
+                    <p>€{withdrawals?.amount}</p>
+                  </div>
+                  <div className="flex flex-row items-center gap-2 w-2/4">
+                    {!(withdrawals?.declined || withdrawals?.confirmed) ? (
+                      <>
+                        <button
+                          className="px-3 py-1 bg-green-300 rounded-sm"
+                          // onClick={() =>
+                          //   handleApprove(withdrawals.id, { confirmed: true })
+                          // }
+                          // onClick={openApproveModal}
+                          onClick={() => {
+                            setSelectedWithdrawalId(withdrawals); // Set the selected withdrawal ID
+                            setApproveModalVisible(true); // Open the modal
+                          }}
+                        >
+                          {isapprove[withdrawals?.id]
+                            ? "Loading..."
+                            : "Approve"}
+                        </button>
+
+                        <button
+                          className="px-3 py-1 bg-red-400 rounded-sm"
+                          onClick={() => {
+                            setSelectedWithdrawalId2(withdrawals.id); // Set the selected withdrawal ID
+                            setDeclineModalVisible(true); // Open the modal
+                          }}
+                        >
+                          {isapprove[withdrawals?.id]
+                            ? "Loading..."
+                            : "Decline"}
+                        </button>
+                      </>
+                    ) : withdrawals?.confirmed ? (
+                      <p className="text-green-600 font-bold">Confirmed</p>
+                    ) : withdrawals?.declined ? (
+                      <p className="text-red-600 font-bold">Declined</p>
+                    ) : null}
+                  </div>
+                </div>
               </div>
             ))}
           </>
@@ -555,11 +555,10 @@ const Page = () => {
         </div>
       </div>
       <ApproveModal
+        handleApprove={handleApprove}
         onClose={closeApproveModal}
         visible={approveModalVisible}
-        onApprove={() =>
-          handleApprove(selectedWithdrawalId, { confirmed: true })
-        }
+        withdrawal={selectedWithdrawalId}
       />
       <DeclineModal
         onClose={closeDeclineModal}

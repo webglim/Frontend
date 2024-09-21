@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
-const ApproveModal = ({ visible, onClose, onApprove }: any) => {
+const ApproveModal = ({ visible, onClose, withdrawal, handleApprove }: any) => {
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center ${
@@ -20,6 +20,16 @@ const ApproveModal = ({ visible, onClose, onApprove }: any) => {
             onClick={onClose}
           />
         </div>
+        <div className="bg-[#EDEFFF] p-[16px] rounded-[8px] gap-2">
+          <div className="flex flex-col">
+            <p className="font-[800]">wallet address</p>
+            <p>{withdrawal?.walletAddress}</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="font-[800]">wallet type</p>
+            <p>{withdrawal?.walletType}</p>
+          </div>
+        </div>
 
         <div className="bg-[#EDEFFF] mt-4 p-[16px] rounded-[8px] justify-between flex flex-col gap-[18.53px] ">
           <p className="font-[800]  text-[18.83px] leading-[22.24px] text-[#2E2A39] w-full ">
@@ -27,7 +37,7 @@ const ApproveModal = ({ visible, onClose, onApprove }: any) => {
           </p>
         </div>
         <button
-          onClick={onApprove}
+          onClick={() => handleApprove(withdrawal?.id, { confirmed: true })}
           type="button"
           className="bg-[#4743C9] rounded-[6.24px] py-[6.24px] px-[12.48px] h-[60px] text-white font-[700] text-[16.68px] leading-[25.02px] w-full mt-4"
         >
