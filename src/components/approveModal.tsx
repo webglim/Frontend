@@ -20,7 +20,7 @@ const ApproveModal = ({ visible, onClose, withdrawal, handleApprove }: any) => {
             onClick={onClose}
           />
         </div>
-        <div className="bg-[#EDEFFF] p-[16px] rounded-[8px] gap-2">
+        <div className="bg-[#EDEFFF] p-[16px] rounded-[8px] gap-2 text-black">
           <div className="flex flex-col">
             <p className="font-[800]">wallet address</p>
             <p>{withdrawal?.walletAddress}</p>
