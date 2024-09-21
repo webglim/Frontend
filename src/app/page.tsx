@@ -50,28 +50,6 @@ window.smartsupp||(function(d) {
           `}
       </Script>
 
-      <Navbar
-        scrollToAnnounce={scrollToAnnounce}
-        scrollToAboutUs={scrollToAboutUs}
-        scrollToFooter={scrollToFooter}
-      />
-      <Hero />
-      <About
-        onScrollComplete={handleScrollComplete}
-        aboutUsRef={aboutUsRef}
-        shouldAboutUs={shouldAboutUs}
-      />
-      <Service />
-      <Announcement
-        shouldAnnounce={shouldAnnounce}
-        announceRef={announceRef}
-        onScrollComplete={handleScrollComplete}
-      />
-      <Footer
-        shouldFooter={shouldFooter}
-        footerRef={footerRef}
-        onScrollComplete={handleScrollComplete}
-      />
       {/* <Link href="/support">
         <div className="  fixed bottom-8 right-8" style={{ zIndex: 1000 }}>
           <Image src={chatbot} alt="" />
