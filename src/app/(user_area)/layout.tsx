@@ -80,7 +80,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                 </div>
               </div>
             </div>
-            <div className={`overflow-y-scroll `}>{children}</div>
           </div>
         </div>
         <Script id="smartsupp-chat" strategy="afterInteractive">
