@@ -164,9 +164,9 @@ const WithdrawModal = ({ visible, onClose }: any) => {
                 value={formData.walletAddress}
                 name="walletAddress"
                 onChange={handleChange}
-                type="number"
+                type="text"
                 className="bg-[#EDEFFF] w-full"
-                placeholder={`0.00`}
+                placeholder={`Input wallet address`}
                 // min={minValue}
               />
             </div>
