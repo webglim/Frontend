@@ -43,7 +43,11 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
       },
     },
   };
-
+  const phone = () => {
+    if (!isTab) {
+      closeSidebar();
+    }
+  };
   return (
     <div>
       <div
@@ -69,7 +73,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
           <ul className=" px-2.5 text-[0.9rem] py-5 flex flex-col gap-[16px] font-medium overflow-x-hidden">
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/dashboard"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/dashboard"
@@ -85,7 +89,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             </li>
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/invest"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/invest"
@@ -102,7 +106,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             </li>
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/reinvest"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/reinvest"
@@ -119,7 +123,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             </li>
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/settings"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/settings"
@@ -136,7 +140,7 @@ function UserSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             </li>
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/changepassword"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/changepassword"

@@ -44,6 +44,12 @@ function AdminSidebar({ isOpen, openSidebar, closeSidebar }: any) {
     },
   };
 
+  const phone = () => {
+    if (!isTab) {
+      closeSidebar();
+    }
+  };
+
   return (
     <div>
       <div
@@ -69,7 +75,7 @@ function AdminSidebar({ isOpen, openSidebar, closeSidebar }: any) {
           <ul className=" px-2.5 text-[0.9rem] py-5 flex flex-col gap-[16px] font-medium overflow-x-hidden">
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/adminArea"
                 className={`flex flex-row  text-[A4A4A4] text-white items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] 
                   ${
@@ -86,7 +92,7 @@ function AdminSidebar({ isOpen, openSidebar, closeSidebar }: any) {
             </li>
             <li>
               <Link
-                // onClick={closeSidebar}
+                onClick={phone}
                 href="/adminchangepassword"
                 className={`flex flex-row items-center gap-[16px] px-[30px] py-[20px] rounded-[8px] ${
                   pathname === "/adminchangepassword"
